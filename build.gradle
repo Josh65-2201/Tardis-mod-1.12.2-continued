@@ -1,0 +1,80 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "http://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+
+version = project.mod_version
+group = project.maven_group
+archivesBaseName = project.jar_name
+
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
+
+minecraft {
+    version = "${project.minecraft_verison}-${project.forge_version}"
+    if(project.hasProperty('runDir')) {
+        runDir = project.runDir
+    }
+    else if(file('../run').exists()) {
+        runDir = "../run"
+    }
+    else {
+        runDir = "run"
+    }
+    mappings = project.mappings_version
+    makeObfSourceJar = true
+    replace '@VERSION@', project.version
+    if(project.hasProperty('signSHA1')) replace '@FINGERPRINT@', project.findProperty('signSHA1')
+    replaceIn ("${project.reference_class}".replace(".", "/") + ".java")
+}
+
+repositories {
+
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven"
+    }
+
+    maven {
+        name = "JitPack"
+        url = "https://jitpack.io"
+    }
+    maven {
+        name = "Progwml6 maven"
+        url = "http://dvs1.progwml6.com/files/maven"
+    }
+}
+
+
+jar{
+    manifest {
+        attributes 'FMLAT': 'tardis_at.cfg'
+    }
+}
+
+dependencies {}
+
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else except the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
