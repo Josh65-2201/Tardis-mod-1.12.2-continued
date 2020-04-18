@@ -1,0 +1,420 @@
+{
+  "takeoff": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.vworp",
+    "sounds": [
+      {
+        "name": "tardis:takeoff",
+        "stream": false
+      }
+    ]
+  },
+
+  "tardis_land": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.vworp",
+    "sounds": [
+      {
+        "name": "tardis:tardis_land",
+        "stream": false
+      }
+    ]
+  },
+  "tardis_no_fuel": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.vworp",
+    "sounds": [
+      {
+        "name": "tardis:tardis_no_fuel",
+        "stream": false
+      }
+    ]
+  },
+"control_stabilizers_on": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.stabilizers_on",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_stabilizers_on",
+        "stream": false
+      }
+    ]
+  },
+  "control_stabilizers_off": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.stabilizers_off",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_stabilizers_off",
+        "stream": false
+      }
+    ]
+  },
+    "control_refuel_start": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_refuel_start",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_refuel_start",
+        "stream": false
+      }
+    ]
+  },
+      "control_refuel_stop": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_refuel_stop",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_refuel_stop",
+        "stream": false
+      }
+    ]
+  },
+      "control_direction": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_direction",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_direction_one",
+        "stream": false
+      },
+	  {
+        "name": "tardis:controls/control_direction_two",
+        "stream": false
+      },
+	  {
+        "name": "tardis:controls/control_direction_three",
+        "stream": false
+      }
+    ]
+  },
+  "control_telepathic_circuit": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_telepathic_circuit",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_telepathic_circuit",
+        "stream": false
+      }
+    ]
+  },
+    "control_landing_type_up": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_landing_type_up",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_landing_type_up",
+        "stream": false
+      }
+    ]
+  },
+    "control_landing_type_down": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_landing_type_down",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_landing_type_down",
+        "stream": false
+      }
+    ]
+  },
+  "control_fast_return": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_fast_return",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_fast_return",
+        "stream": false
+      }
+    ]
+  },
+  "control_dimension": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_dimension",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_dimension_one",
+        "stream": false
+      },
+	  {
+        "name": "tardis:controls/control_dimension_two",
+        "stream": false
+      },
+	  {
+        "name": "tardis:controls/control_dimension_three",
+        "stream": false
+      }
+    ]
+  },
+  "loop": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.flying",
+    "sounds": [
+      {
+        "name": "tardis:loop",
+        "stream": false
+      }
+    ]
+  },
+  "sonic_generic": {
+    "category": "players",
+    "subtitle": "tardis.subtitle.sonic",
+    "sounds": [
+      {
+        "name": "tardis:sonics/sonic_generic",
+        "stream": false
+      }
+    ]
+  },
+    "sonic_silver": {
+    "category": "players",
+    "subtitle": "tardis.subtitle.sonic",
+    "sounds": [
+      {
+        "name": "tardis:sonics/sonic_silver",
+        "stream": false
+      }
+    ]
+  },
+  "dalek_ray": {
+    "category": "hostile",
+    "subtitle": "tardis.subtitle.dalek_ray",
+    "sounds": [
+      {
+        "name": "tardis:dalek_ray",
+        "stream": false
+      }
+    ]
+  },
+  "dalek": {
+    "category": "hostile",
+    "subtitle": "tardis.subtitle.dalek",
+    "sounds": [
+      {
+        "name": "tardis:dalek",
+        "stream": false
+      }
+    ]
+  },
+  "force_field": {
+    "category": "players",
+    "subtitle": "tardis.subtitle.force_field",
+    "sounds": [
+      {
+        "name": "tardis:force_field",
+        "stream": false
+      }
+    ]
+  },
+  "locked": {
+    "category": "blocks",
+    "subtitle": "tardis.subtitle.locked",
+    "sounds": [
+      {
+        "name": "tardis:locked",
+        "stream": false
+      }
+    ]
+  },
+  "door_open": {
+    "category": "blocks",
+    "subtitle": "tardis.subtitle.door_open",
+    "sounds": [
+      {
+        "name": "tardis:door_open",
+        "stream": false
+      }
+    ]
+  },
+  "door_closed": {
+    "category": "blocks",
+    "subtitle": "tardis.subtitle.door_closed",
+    "sounds": [
+      {
+        "name": "tardis:door_close",
+        "stream": false
+      }
+    ]
+  },
+  "interior_hum_80": {
+    "category": "blocks",
+    "subtitle": "tardis.subtitle.interior_hum_80",
+    "sounds": [
+      {
+        "name": "tardis:interior_hum_80",
+        "stream": false
+      }
+    ]
+  },
+  "cloister_bell": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:cloister_bell",
+        "stream": false
+      }
+    ]
+  },
+  "drum_beat": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:drum_beat",
+        "stream": false
+      }
+    ]
+  },
+  "bessie_horn": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:bessie_horn",
+        "stream": false
+      }
+    ]
+  },
+  "stutter": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:stutter",
+        "stream": false
+      }
+    ]
+  },
+  "phone": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:phone",
+        "stream": false
+      }
+    ]
+  },
+  "knocking": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:knocking",
+        "stream": false
+      }
+    ]
+  },
+  "fly_loop": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:fly_loop",
+        "stream": false
+      }
+    ]
+  },
+  "1963_food_machine": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:1963/food_machine",
+        "stream": false
+      }
+    ]
+  },
+  "1963_int_door": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:1963/int_door",
+        "stream": false
+      }
+    ]
+  },
+  "1963_interior_hum": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:1963/interior_hum",
+        "stream": false
+      }
+    ]
+  },
+  "control_generic_01": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:controls/generic_01",
+        "stream": false
+      }
+    ]
+  },
+  "control_generic_02": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:generic_01",
+        "stream": false
+      }
+    ]
+  },
+  "control_generic_03": {
+    "category": "blocks",
+    "sounds": [
+      {
+        "name": "tardis:generic_03",
+        "stream": false
+      }
+    ]
+  },
+  "vm_teleport": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "tardis:vm_teleport",
+        "stream": false
+      }
+    ]
+  },
+  "tardis_hum_copper": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "tardis:tardis_hum_copper",
+        "stream": false
+      }
+    ]
+  },
+  "tardis_hum_coral": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "tardis:tardis_hum_coral",
+        "stream": false
+      }
+    ]
+  },
+  "tardis_hum_toyota": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "tardis:tardis_hum_toyota",
+        "stream": false
+      }
+    ]
+  },
+  "tardis_hum_70": {
+    "category": "ambient",
+    "sounds": [
+      {
+        "name": "tardis:tardis_hum_70",
+        "stream": false
+      }
+    ]
+  },
+  "remote_accept": {
+  "category": "player",
+  "sounds": [
+    {
+      "name": "tardis:remote_accept",
+      "stream": false
+    }
+  ]
+}
+}
