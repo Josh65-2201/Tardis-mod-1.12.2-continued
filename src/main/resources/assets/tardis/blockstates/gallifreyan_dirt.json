@@ -1,14 +1,6 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "tardis:gallifreyan_dirt"
-  },
-  "variants": {
-    "inventory": [
-      {}
-    ],
-    "normal": [
-      {}
-    ]
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "tardis:blocks/gallifrey/gallifreyan_dirt"
   }
 }

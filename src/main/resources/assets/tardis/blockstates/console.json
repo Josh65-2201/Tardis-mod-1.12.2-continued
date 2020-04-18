@@ -1,14 +1,10 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "tardis:console"
-  },
-  "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": [
-      {}
+  "parent": "builtin/entity",
+  "display": {
+    "translation": [
+      0,
+      0,
+      0
     ]
   }
 }
