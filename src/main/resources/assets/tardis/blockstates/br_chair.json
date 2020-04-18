@@ -1,0 +1,26 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "tardis:teisr"
+  },
+  "variants": {
+    "normal": [
+      {}
+    ],
+    "inventory": {
+      "model": "tardis:chair_br"
+    },
+    "facing=north": [
+      {}
+    ],
+    "facing=south": [
+      {}
+    ],
+    "facing=east": [
+      {}
+    ],
+    "facing=west": [
+      {}
+    ]
+  }
+}
