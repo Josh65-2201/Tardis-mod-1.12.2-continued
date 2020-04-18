@@ -1,26 +1,6 @@
 {
-  "forge_marker": 1,
-  "defaults": {
-    "model": "tardis:teisr"
-  },
-  "variants": {
-    "normal": [
-      {}
-    ],
-    "inventory": {
-      "model": "tardis:am_sphere"
-    },
-    "facing=north": [
-      {}
-    ],
-    "facing=east": [
-      {}
-    ],
-    "facing=south": [
-      {}
-    ],
-    "facing=west": [
-      {}
-    ]
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tardis:items/am_sphere"
   }
 }
