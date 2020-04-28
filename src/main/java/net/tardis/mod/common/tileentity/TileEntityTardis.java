@@ -194,7 +194,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			
 			else if (this.ticksToTravel > this.landingSoundDuration && this.ticksToTravel < this.totalTimeToTravel - this.landingSoundDuration) {
 				if (this.ticksToTravel % 40 == 0) {
-					world.playSound(null, this.getPos(), TSounds.loop, SoundCategory.BLOCKS, 0.5F, 1F);
+					world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
 				}
 			}
 			

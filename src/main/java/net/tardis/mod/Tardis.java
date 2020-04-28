@@ -59,7 +59,6 @@ import net.tardis.mod.common.entities.controls.ControlMag;
 import net.tardis.mod.common.entities.controls.ControlMonitor;
 import net.tardis.mod.common.entities.controls.ControlPhone;
 import net.tardis.mod.common.entities.controls.ControlRandom;
-import net.tardis.mod.common.entities.controls.ControlSonicSlot;
 import net.tardis.mod.common.entities.controls.ControlStabilizers;
 import net.tardis.mod.common.entities.controls.ControlTelepathicCircuts;
 import net.tardis.mod.common.entities.controls.ControlWaypoint;
@@ -185,7 +184,6 @@ public class Tardis {
 		EntityHelper.registerStatic(ControlDoorSwitch.class, "tardis_door_control");
 		EntityHelper.registerStatic(ControlPhone.class, "tardis_phone");
 		EntityHelper.registerStatic(ControlMag.class, "tardis_magnitude");
-		EntityHelper.registerStatic(ControlSonicSlot.class, "sonic_slot");
 		EntityHelper.registerStatic(ControlStabilizers.class, "stabilizers");
 		EntityHelper.registerStatic(ControlMonitor.class, "monitor");
 		EntityHelper.registerStatic(ControlWaypoint.class, "waypoint_select");

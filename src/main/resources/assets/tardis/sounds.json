@@ -1,5 +1,5 @@
 {
-  "takeoff": {
+    "takeoff": {
     "category": "block",
     "subtitle": "tardis.subtitle.vworp",
     "sounds": [
@@ -9,8 +9,7 @@
       }
     ]
   },
-
-  "tardis_land": {
+    "tardis_land": {
     "category": "block",
     "subtitle": "tardis.subtitle.vworp",
     "sounds": [
@@ -20,7 +19,7 @@
       }
     ]
   },
-  "tardis_no_fuel": {
+    "tardis_no_fuel": {
     "category": "block",
     "subtitle": "tardis.subtitle.vworp",
     "sounds": [
@@ -30,7 +29,7 @@
       }
     ]
   },
-"control_stabilizers_on": {
+    "control_stabilizers_on": {
     "category": "block",
     "subtitle": "tardis.subtitle.stabilizers_on",
     "sounds": [
@@ -40,7 +39,7 @@
       }
     ]
   },
-  "control_stabilizers_off": {
+    "control_stabilizers_off": {
     "category": "block",
     "subtitle": "tardis.subtitle.stabilizers_off",
     "sounds": [
@@ -60,7 +59,7 @@
       }
     ]
   },
-      "control_refuel_stop": {
+    "control_refuel_stop": {
     "category": "block",
     "subtitle": "tardis.subtitle.control_refuel_stop",
     "sounds": [
@@ -70,7 +69,7 @@
       }
     ]
   },
-      "control_direction": {
+    "control_direction": {
     "category": "block",
     "subtitle": "tardis.subtitle.control_direction",
     "sounds": [
@@ -88,7 +87,7 @@
       }
     ]
   },
-  "control_telepathic_circuit": {
+    "control_telepathic_circuit": {
     "category": "block",
     "subtitle": "tardis.subtitle.control_telepathic_circuit",
     "sounds": [
@@ -118,7 +117,7 @@
       }
     ]
   },
-  "control_fast_return": {
+    "control_fast_return": {
     "category": "block",
     "subtitle": "tardis.subtitle.control_fast_return",
     "sounds": [
@@ -128,7 +127,7 @@
       }
     ]
   },
-  "control_dimension": {
+    "control_dimension": {
     "category": "block",
     "subtitle": "tardis.subtitle.control_dimension",
     "sounds": [
@@ -146,17 +145,17 @@
       }
     ]
   },
-  "loop": {
+    "fly_loop": {
     "category": "block",
     "subtitle": "tardis.subtitle.flying",
     "sounds": [
       {
-        "name": "tardis:loop",
+        "name": "tardis:fly_loop",
         "stream": false
       }
     ]
   },
-  "sonic_generic": {
+    "sonic_generic": {
     "category": "players",
     "subtitle": "tardis.subtitle.sonic",
     "sounds": [
@@ -176,7 +175,7 @@
       }
     ]
   },
-  "dalek_ray": {
+    "dalek_ray": {
     "category": "hostile",
     "subtitle": "tardis.subtitle.dalek_ray",
     "sounds": [
@@ -186,7 +185,7 @@
       }
     ]
   },
-  "dalek": {
+    "dalek": {
     "category": "hostile",
     "subtitle": "tardis.subtitle.dalek",
     "sounds": [
@@ -196,7 +195,7 @@
       }
     ]
   },
-  "force_field": {
+    "force_field": {
     "category": "players",
     "subtitle": "tardis.subtitle.force_field",
     "sounds": [
@@ -206,7 +205,7 @@
       }
     ]
   },
-  "locked": {
+    "locked": {
     "category": "blocks",
     "subtitle": "tardis.subtitle.locked",
     "sounds": [
@@ -216,7 +215,7 @@
       }
     ]
   },
-  "door_open": {
+    "door_open": {
     "category": "blocks",
     "subtitle": "tardis.subtitle.door_open",
     "sounds": [
@@ -226,7 +225,7 @@
       }
     ]
   },
-  "door_closed": {
+    "door_closed": {
     "category": "blocks",
     "subtitle": "tardis.subtitle.door_closed",
     "sounds": [
@@ -236,7 +235,7 @@
       }
     ]
   },
-  "interior_hum_80": {
+    "interior_hum_80": {
     "category": "blocks",
     "subtitle": "tardis.subtitle.interior_hum_80",
     "sounds": [
@@ -246,16 +245,16 @@
       }
     ]
   },
-  "cloister_bell": {
+    "alarm": {
     "category": "blocks",
     "sounds": [
       {
-        "name": "tardis:cloister_bell",
+        "name": "tardis:alarm",
         "stream": false
       }
     ]
   },
-  "drum_beat": {
+    "drum_beat": {
     "category": "blocks",
     "sounds": [
       {
@@ -264,7 +263,7 @@
       }
     ]
   },
-  "bessie_horn": {
+    "bessie_horn": {
     "category": "blocks",
     "sounds": [
       {
@@ -273,7 +272,7 @@
       }
     ]
   },
-  "stutter": {
+    "stutter": {
     "category": "blocks",
     "sounds": [
       {
@@ -282,7 +281,7 @@
       }
     ]
   },
-  "phone": {
+    "phone": {
     "category": "blocks",
     "sounds": [
       {
@@ -291,7 +290,7 @@
       }
     ]
   },
-  "knocking": {
+    "knocking": {
     "category": "blocks",
     "sounds": [
       {
@@ -300,16 +299,7 @@
       }
     ]
   },
-  "fly_loop": {
-    "category": "blocks",
-    "sounds": [
-      {
-        "name": "tardis:fly_loop",
-        "stream": false
-      }
-    ]
-  },
-  "1963_food_machine": {
+    "1963_food_machine": {
     "category": "blocks",
     "sounds": [
       {
@@ -318,7 +308,7 @@
       }
     ]
   },
-  "1963_int_door": {
+    "1963_int_door": {
     "category": "blocks",
     "sounds": [
       {
@@ -327,7 +317,7 @@
       }
     ]
   },
-  "1963_interior_hum": {
+    "1963_interior_hum": {
     "category": "blocks",
     "sounds": [
       {
@@ -336,7 +326,7 @@
       }
     ]
   },
-  "control_generic_01": {
+    "control_generic_01": {
     "category": "blocks",
     "sounds": [
       {
@@ -345,11 +335,11 @@
       }
     ]
   },
-  "control_generic_02": {
+    "control_generic_02": {
     "category": "blocks",
     "sounds": [
       {
-        "name": "tardis:generic_01",
+        "name": "tardis:controls/generic_02",
         "stream": false
       }
     ]
@@ -358,7 +348,7 @@
     "category": "blocks",
     "sounds": [
       {
-        "name": "tardis:generic_03",
+        "name": "tardis:controls/generic_03",
         "stream": false
       }
     ]
