@@ -12,7 +12,7 @@ import net.tardis.mod.util.common.helpers.Helper;
 
 public class ControlMag extends EntityControl {
 
-	public static final int[] mags = {1, 10, 100, 1000};
+	public static final int[] mags = {1, 10, 100};
 	private int index = 0;
 
 	public ControlMag(TileEntityTardis tardis) {
@@ -43,7 +43,7 @@ public class ControlMag extends EntityControl {
 		if (!player.isSneaking()) {
 			tardis.magnitude = tardis.magnitude == 1 ? tardis.magnitude = 10 : (tardis.magnitude == 10 ? tardis.magnitude = 100 : 1);
 		}
-		player.sendStatusMessage(new TextComponentString(new TextComponentTranslation(TStrings.MAGNITUDE).getFormattedText() + tardis.magnitude), true);
+		player.sendStatusMessage(new TextComponentString(new TextComponentTranslation(TStrings.MAGNITUDE).getFormattedText() + " " + tardis.magnitude), true);
 	}
 
 	@Override

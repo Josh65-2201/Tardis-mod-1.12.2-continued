@@ -75,7 +75,7 @@ public class RenderHellbentMonitor extends TileEntitySpecialRenderer<TileEntityH
 		mc.fontRenderer.drawString("Target Dim: " + targetDimName, 0, mc.fontRenderer.FONT_HEIGHT * 3, Color.WHITE.getRGB());
 		mc.fontRenderer.drawString("Artron Banks: " + tardis.getArtron() + " units", 0, mc.fontRenderer.FONT_HEIGHT * 4, Color.white.getRGB());
 		if (tardis.isInFlight())
-			mc.fontRenderer.drawString("Time Left " + tardis.getTimeLeft() / 20, 0, mc.fontRenderer.FONT_HEIGHT * 5, Color.WHITE.getRGB());
+			mc.fontRenderer.drawString("Time Left: " + tardis.getTimeLeft() / 20, 0, mc.fontRenderer.FONT_HEIGHT * 5, Color.WHITE.getRGB());
 		else mc.fontRenderer.drawString("TARDIS Landed", 0, mc.fontRenderer.FONT_HEIGHT * 5, Color.WHITE.getRGB());
 		mc.fontRenderer.drawString("TARDIS Facing: " + tardis.facing.getName(), 0, mc.fontRenderer.FONT_HEIGHT * 6, Color.WHITE.getRGB());
 	}
