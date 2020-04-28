@@ -12,7 +12,7 @@ import net.tardis.mod.util.common.helpers.Helper;
 
 public class ControlMag extends EntityControl {
 
-	public static final int[] mags = {1, 10, 100, 1000};
+	public static final int[] mags = {1, 10, 100};
 	private int index = 0;
 
 	public ControlMag(TileEntityTardis tardis) {
