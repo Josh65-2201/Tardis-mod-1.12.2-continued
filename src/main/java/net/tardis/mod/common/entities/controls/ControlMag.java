@@ -43,7 +43,7 @@ public class ControlMag extends EntityControl {
 		if (!player.isSneaking()) {
 			tardis.magnitude = tardis.magnitude == 1 ? tardis.magnitude = 10 : (tardis.magnitude == 10 ? tardis.magnitude = 100 : 1);
 		}
-		player.sendStatusMessage(new TextComponentString(new TextComponentTranslation(TStrings.MAGNITUDE).getFormattedText() + " " + tardis.magnitude), true);
+		player.sendStatusMessage(new TextComponentString(new TextComponentTranslation(TStrings.MAGNITUDE).getFormattedText() + tardis.magnitude), true);
 	}
 
 	@Override

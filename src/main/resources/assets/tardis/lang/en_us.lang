@@ -139,6 +139,8 @@ tile.tardis.sonic_workbench.name=Sonic Workbench
 tile.tardis.tree_egg.name=ARS Tree Egg
 tile.tardis.table_brachacki.name=Table
 tile.tardis.tractor_beam.name=Dalek Tractor Beam
+tile.tardis.toyota_light_off.name=Toyota light
+tile.tardis.toyota_light_on.name=Toyota light
 tile.tardis.dalek_hull.name=Dalek hull
 tile.tardis.dalek_hull_slab.name=Dalek Hull Slab
 tile.tardis.artron_bank.name=Artron Bank
@@ -149,9 +151,6 @@ tile.tardis.gallifreyan_stone.name=Strange Stone
 
 tardis.locked.true=TARDIS locked!
 tardis.locked.false=TARDIS unlocked!
-
-door.tardis.locked.true=This TARDIS is now double locked!
-door.tardis.locked.false=Double lock lifted.
 
 death.attack.dalek=killed by a Dalek Ray Gun!
 death.cyberman.ray=was deleted.
@@ -169,7 +168,6 @@ screw.lamp=Tinker Mode
 screwdriver.hallway=Room Gen - Hallway
 screw.generic_room=Room Gen - Small Room
 screw.electric=Dismantle Roundel Panel
-screwdriver.hads=Return From H.A.D.S
 screw.general=Block interactions
 screw.entities=Entity interactions
 screw.tardis.signal=Signal TARDIS
@@ -198,25 +196,20 @@ tardis.missing=The outer plasmic shell cannot be found! Please land again.
 
 tardis.magnitude=TARDIS Coordinate modifier is
 
-tardis.hads.enabled.true=H.A.D.S has been enabled
-tardis.hads.enabled.false=H.A.D.S has been disabled
-
 protocol.ccircut=Chameleon Circuit
-protocol.hads=Toggle H.A.D.S
 protocol.hum=Toggle hum
 protocol.tardis.find_rift=Find nearest Rift
 protocol.tardis.systemreadout=Sub-System readout
 protocol.tardis.change.console=Change Console
 protocol.tardis.ars=Architectural Reconfiguration System
 protocol.tardis.regenroom=Regenerate Console Room
-protocol.tardis.lock=Double Lock Doors
 protocol.tardis.destroy.rift=Consume Dimensional Rift
 protocol.tardis.repair=Repair the TARDIS
 protocol.tardis.waypoint.load=Waypoint
 protocol.tardis.interior=Change Interior
 protocol.tardis.stealth=Stealth Mode
-protocol.tardis.stealth.false=Disengaged Stealth Mode
-protocol.tardis.stealth.true=Stealth Mode Engaged!
+protocol.tardis.stealth.false=Stealth Mode Disengaged
+protocol.tardis.stealth.true=Stealth Mode Engaged
 protocol.tardis.emer.escape=§4Escape§r
 protocol.tardis.forcefield=Forcefield
 
@@ -247,7 +240,6 @@ config.telosDim=Telos Dimension ID
 config.entity=Entities
 config.entity.allowed=Should this mod add Mobs?
 config.entity.cybermen.spawnchance=Chance That A Cyberman Will Spawn (Per Chunk)
-config.entity.adipose.spawnchance=Chance That An Adipose Will Spawn (Per Chunk)
 
 config.misc=Misc
 config.misc.givekey=Give player a TARDIS key when they join the world?
@@ -284,7 +276,6 @@ tardis.stabilizers.true=Stabilizers On
 tardis.stabilizers.false=Stabilizers Off
 
 entity.dalek.name=Dalek
-entity.adipose.name=Adipose
 entity.invasion_cyberman.name=Invasion Cyberman
 
 death.cyberman.generic=was converted!
