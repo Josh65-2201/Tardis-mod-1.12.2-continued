@@ -1,8 +1,8 @@
 {
   "homepage": "https://minecraft.curseforge.com/projects/new-tardis-mod",
   "promos": {
-    "1.12.2-latest": "0.0.7A",
-    "1.12.2-recommended": "0.0.7A"
+    "1.12.2-latest": "0.1.5",
+    "1.12.2-recommended": "0.1.5"
   },
   "1.12.2": {
     "0.0.1A" : "Is that a plane? A bird? No! It's a TARDIS!",

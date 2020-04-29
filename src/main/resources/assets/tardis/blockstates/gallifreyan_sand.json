@@ -1,6 +1,14 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "tardis:blocks/gallifrey/gallifreyan_sand"
+  "forge_marker": 1,
+  "defaults": {
+    "model": "tardis:gallifreyan_sand"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
   }
 }
