@@ -29,7 +29,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -40,7 +39,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -60,8 +58,6 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.tardis.mod.Tardis;
 import net.tardis.mod.api.dimensions.IDimensionProperties;
-import net.tardis.mod.cap.ITardisTracker;
-import net.tardis.mod.cap.ITardisTracker.TrackerProvider;
 import net.tardis.mod.common.blocks.BlockConsole;
 import net.tardis.mod.common.blocks.TBlocks;
 import net.tardis.mod.common.dimensions.TDimensions;
@@ -304,6 +300,7 @@ public class TEventHandler {
 			TileEntity te = event.getEntityPlayer().world.getTileEntity(TardisHelper.getTardisForPosition(event.getPos()));
 			if(te instanceof TileEntityTardis) {
 				((TileEntityTardis)te).addBedLoc(event.getEntityPlayer(), event.getPos());
+				System.out.println("Added " + event.getPos() + " which was " + event.getEntityPlayer().world.getBlockState(event.getPos()).getBlock());
 			}
 		}
 	}
@@ -331,16 +328,6 @@ public class TEventHandler {
 					}
 				}
 			}
-		}
-	}
-	
-	public static final ResourceLocation TRACKER_CAP = new ResourceLocation(Tardis.MODID, "tracker");
-	
-	@SubscribeEvent
-	public static void onCapabilityAttach(AttachCapabilitiesEvent<ItemStack> event) {
-		if(event.getObject().getItem() == TItems.tracker) {
-			if(!event.getObject().hasCapability(ITardisTracker.TRACKER, EnumFacing.DOWN))
-				event.addCapability(TRACKER_CAP, new TrackerProvider());
 		}
 	}
 }
