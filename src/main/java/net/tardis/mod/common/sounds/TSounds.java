@@ -15,6 +15,7 @@ public class TSounds {
 	private static ArrayList<SoundEvent> sounds = new ArrayList<SoundEvent>();
 
 	public static SoundEvent takeoff = register("takeoff");
+	public static SoundEvent loop = register("loop");
 
 	public static SoundEvent dalek_ray = register("dalek_ray");
 	public static SoundEvent dalek = register("dalek");
@@ -27,7 +28,7 @@ public class TSounds {
 	public static SoundEvent interior_hum_coral = register("tardis_hum_coral");
 	public static SoundEvent interior_hum_toyota = register("tardis_hum_toyota");
 	public static SoundEvent interior_hum_70 = register("tardis_hum_70");
-	public static SoundEvent cloister_bell = register("alarm");
+	public static SoundEvent cloister_bell = register("cloister_bell");
 	public static SoundEvent drum_beat = register("drum_beat");
 	public static SoundEvent engine_stutter = register("stutter");
 	public static SoundEvent phone = register("phone");
