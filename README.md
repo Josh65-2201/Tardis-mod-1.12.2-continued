@@ -1,9 +1,9 @@
-# New Tardis Mod
+# New Tardis Mod 1.12.2 continuation
 
 ## Download:
-
+https://github.com/josh-65/Tardis-mod-1.12.2-continued/releases
 
 ## Wiki:
-http://tardis-mod.com
+https://tardis-mod.com/books/deprecated-features
 
 
