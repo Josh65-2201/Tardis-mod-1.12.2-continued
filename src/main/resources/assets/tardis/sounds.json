@@ -245,11 +245,11 @@
       }
     ]
   },
-    "alarm": {
+    "cloister_bell": {
     "category": "blocks",
     "sounds": [
       {
-        "name": "tardis:alarm",
+        "name": "tardis:cloister_bell",
         "stream": false
       }
     ]

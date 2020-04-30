@@ -15,7 +15,6 @@ public class TSounds {
 	private static ArrayList<SoundEvent> sounds = new ArrayList<SoundEvent>();
 
 	public static SoundEvent takeoff = register("takeoff");
-	public static SoundEvent loop = register("loop");
 
 	public static SoundEvent dalek_ray = register("dalek_ray");
 	public static SoundEvent dalek = register("dalek");

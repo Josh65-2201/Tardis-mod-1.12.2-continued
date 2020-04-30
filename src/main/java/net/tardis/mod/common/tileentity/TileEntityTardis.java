@@ -164,6 +164,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		this.controlClases.add(ControlWaypoint::new);
 	}
 	
+
 	@Override
 	public void update() {
 		if (hum != null) {
@@ -192,11 +193,11 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				if(!world.isRemote)
 					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.BLOCKS, 1F, 1F);
 			
-			else if (this.ticksToTravel > this.landingSoundDuration && this.ticksToTravel < this.totalTimeToTravel - this.landingSoundDuration) {
-				if (this.ticksToTravel % 40 == 0) {
-					world.playSound(null, this.getPos(), TSounds.loop, SoundCategory.BLOCKS, 0.5F, 1F);
-				}
-			}
+			//In flight
+			//if ((this.ticksToTravel > 200) {
+			//	if(!world.isRemote)
+			//		world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
+			//}
 			
 			if (this.artron <= 0.0 && this.ticksToTravel % 5 == 0)
 				crash();

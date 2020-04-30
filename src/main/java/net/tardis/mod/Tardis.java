@@ -292,9 +292,11 @@ public class Tardis {
 		ConsoleRoom.registerConsoleRoom("textures/gui/previews/preview_industrial.png", "interior/interior_industrial", new BlockPos(11, 2, 18));
 		ConsoleRoom.registerConsoleRoom("textures/gui/previews/preview_helian.png", "interior/interior_helian", new BlockPos(18,1,18));
 		ConsoleRoom.registerConsoleRoom("textures/gui/previews/preview_magmatic.png", "interior/interior_magmatic", new BlockPos(21, 3, 16));
+		ConsoleRoom.registerConsoleRoom("textures/gui/previews/preview_explorer.png", "interior/interior_explorer", new BlockPos(23, 3, 20));
 
 		ConsoleRoom.registerConsoleRoom("textures/gui/previews/preview_builder.png", "interior/interior_builder", new BlockPos(9, 1, 9));
 		
+
 		TileEntitySonicWorkbench.RECIPES.put(TItems.key, new Item[]{TItems.key_01});
 		Item[] sonics = new Item[ItemSonic.SONICS.size()];
 		for(int sonicID = 0; sonicID < sonics.length; ++sonicID) {
