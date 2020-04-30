@@ -15,7 +15,7 @@ import net.tardis.mod.common.dimensions.gallifrey.biomes.BiomeRedlands;
 import net.tardis.mod.common.dimensions.gallifrey.biomes.BiomeWastelands;
 import net.tardis.mod.common.dimensions.moon.BiomeMoon;
 import net.tardis.mod.common.dimensions.moon.MoonProvider;
-import net.tardis.mod.common.dimensions.space.SpaceProvider;
+import net.tardis.mod.common.dimensions.timevortex.TimevortexProvider;
 import net.tardis.mod.common.dimensions.telos.BiomeTelos;
 import net.tardis.mod.common.dimensions.telos.WorldProviderTelos;
 import net.tardis.mod.config.TardisConfig;
@@ -35,8 +35,8 @@ public class TDimensions {
 	public static Biome BIOME_MOON = new BiomeMoon();
 	
 	//Space
-	public static int SPACE_ID;
-	public static DimensionType DIMTYPE_SPACE;
+	public static int TIMEVORTEX_ID;
+	public static DimensionType DIMTYPE_TIMEVORTEX;
 	
 	//Telos
 	public static int TELOS_ID;
@@ -65,10 +65,10 @@ public class TDimensions {
 		DimensionManager.registerDimension(TARDIS_ID, DIMTYPE_TARDIS);
 
 		if (setDim)
-			SPACE_ID = TardisConfig.Dimensions.spaceDimension;
-		else SPACE_ID = DimensionManager.getNextFreeDimId();
-		DIMTYPE_SPACE = DimensionType.register("space", "_space", SPACE_ID, SpaceProvider.class, false);
-		DimensionManager.registerDimension(SPACE_ID, DIMTYPE_SPACE);
+			TIMEVORTEX_ID = TardisConfig.Dimensions.timevortexDimension;
+		else TIMEVORTEX_ID = DimensionManager.getNextFreeDimId();
+		DIMTYPE_TIMEVORTEX = DimensionType.register("timevortex", "_timevortex", TIMEVORTEX_ID, TimevortexProvider.class, false);
+		DimensionManager.registerDimension(TIMEVORTEX_ID, DIMTYPE_TIMEVORTEX);
 
 		if (setDim)
 			TELOS_ID = TardisConfig.Dimensions.telosDimension;

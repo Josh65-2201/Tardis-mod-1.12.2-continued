@@ -67,8 +67,8 @@ public class ItemRemote extends ItemBase {
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT.CONSOLE_POS)) {
 			tooltip.add(new TextComponentTranslation(TStrings.ToolTips.REMOTE).getFormattedText() + " " + Helper.formatBlockPos(getConsolePos(stack)));
-			String format = (stack.getTagCompound().getFloat(NBT.FUEL) * 100 + "");
-			tooltip.add(new TextComponentTranslation(TStrings.ToolTips.REMOTE_FUEL).getFormattedText() + " " + format.substring(0, format.indexOf(".")) + "%");
+			String format = (stack.getTagCompound().getFloat(NBT.FUEL) - 1 + ":");
+			tooltip.add(new TextComponentTranslation(TStrings.ToolTips.REMOTE_FUEL).getFormattedText() + " " + format.substring(0, format.indexOf(".")) + " units");
 			tooltip.add(new TextComponentTranslation(TStrings.ToolTips.REMOTE_TIME).getFormattedText() + " " + stack.getTagCompound().getInteger(NBT.TIME) / 20 + " " + new TextComponentTranslation(TStrings.SECONDS).getFormattedText());
 			tooltip.add(new TextComponentTranslation(TStrings.ToolTips.REMOTE_EPOS).getFormattedText() + " " + Helper.formatBlockPos(BlockPos.fromLong(stack.getTagCompound().getLong(NBT.POS))));
 		} else tooltip.add(new TextComponentTranslation(TStrings.ToolTips.REMOTE_BIND).getFormattedText());

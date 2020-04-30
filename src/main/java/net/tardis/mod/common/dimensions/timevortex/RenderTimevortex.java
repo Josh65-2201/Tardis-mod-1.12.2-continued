@@ -1,10 +1,10 @@
-package net.tardis.mod.common.dimensions.space;
+package net.tardis.mod.common.dimensions.timevortex;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraftforge.client.IRenderHandler;
 
-public class RenderSpace extends IRenderHandler {
+public class RenderTimevortex extends IRenderHandler {
 
 	float lastRot = 0;
 

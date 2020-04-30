@@ -1,4 +1,4 @@
-package net.tardis.mod.common.dimensions.space;
+package net.tardis.mod.common.dimensions.timevortex;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
@@ -12,14 +12,14 @@ import net.minecraft.world.gen.IChunkGenerator;
 
 import java.util.List;
 
-public class ChunkGeneratorSpace implements IChunkGenerator {
+public class ChunkGeneratorTimevortex implements IChunkGenerator {
 
 	private World world;
 
-	public ChunkGeneratorSpace() {
+	public ChunkGeneratorTimevortex() {
 	}
 
-	public ChunkGeneratorSpace(World world) {
+	public ChunkGeneratorTimevortex(World world) {
 		this.world = world;
 	}
 

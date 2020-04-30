@@ -1,4 +1,3 @@
-
 package net.tardis.mod.config;
 
 import net.minecraftforge.common.config.Config;
@@ -38,13 +37,13 @@ public class TardisConfig {
 		@Config.Comment("If this is enabled, You can set dimensions manually below")
 		public boolean setDimension = false;
 
-		@Config.LangKey("config.tDim")
+		@Config.LangKey("config.tardisDim")
 		@Config.Comment("Tardis Dimension ID")
 		public int tardisDimension = 10;
 
-		@Config.LangKey("config.bhDim")
-		@Config.Comment("Space Dimension ID")
-		public int spaceDimension = 22;
+		@Config.LangKey("config.timevortexDim")
+		@Config.Comment("Time vortex Dimension ID")
+		public int timevortexDimension = 22;
 
 		@Config.LangKey("config.telosDim")
 		@Config.Comment("Telos Dimension ID")

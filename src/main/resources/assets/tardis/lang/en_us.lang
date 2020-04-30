@@ -230,8 +230,8 @@ tardis.event.dalek=Dalek Invasion at:
 config.category.dims=Dimensions
 config.dims=Dimension List
 config.setdim=Set Dimension IDs for this mod?
-config.tDim=TARDIS Dimension
-config.bhDim=Space Dimension
+config.tardisDim=TARDIS Dimension
+config.timevortexDim=Time Vortex
 config.dim.usewhitelist=Should the dimensions in the below list be used as a whitelist?
 config.telosDim=Telos Dimension ID
 
