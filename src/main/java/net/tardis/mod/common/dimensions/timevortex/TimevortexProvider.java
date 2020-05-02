@@ -1,4 +1,4 @@
-package net.tardis.mod.common.dimensions.space;
+package net.tardis.mod.common.dimensions.timevortex;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
@@ -12,20 +12,20 @@ import net.tardis.mod.api.dimensions.IDimensionProperties;
 import net.tardis.mod.client.renderers.sky.RenderVoid;
 import net.tardis.mod.common.dimensions.TDimensions;
 
-public class SpaceProvider extends WorldProvider implements IDimensionProperties{
+public class TimevortexProvider extends WorldProvider implements IDimensionProperties{
 	
-	public SpaceProvider() {
+	public TimevortexProvider() {
 		
 	}
 
 	@Override
 	public DimensionType getDimensionType() {
-		return TDimensions.DIMTYPE_SPACE;
+		return TDimensions.DIMTYPE_TIMEVORTEX;
 	}
 
 	@Override
 	public IChunkGenerator createChunkGenerator() {
-		return new ChunkGeneratorSpace(this.world);
+		return new ChunkGeneratorTimevortex(this.world);
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class SpaceProvider extends WorldProvider implements IDimensionProperties
 	@SideOnly(Side.CLIENT)
 	@Override
 	public IRenderHandler getSkyRenderer() {
-		return new RenderSpace();
+		return new RenderTimevortex();
 	}
 
 	@Override
