@@ -10,10 +10,6 @@ import net.tardis.mod.common.tileentity.TileEntityTardis;
 
 import java.util.function.Supplier;
 
-/**
- * Created by Sub
- * on 23/09/2018.
- */
 public class SoundInteriorHum extends MovingSound {
 
 	private EntityPlayer player = Minecraft.getMinecraft().player;
