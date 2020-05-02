@@ -87,17 +87,13 @@ public class TItems {
 	public static Item sonic_seven = createItem(new ItemSonic(TSounds.sonic_silver), "sonic_seven");
 	public static Item sonic_war = createItem(new ItemSonic(TSounds.sonic_silver), "sonic_war");
 	public static Item sonic_10 = createItem(new ItemSonic(TSounds.sonic_generic, true), "sonic_10");
-
 	public static Item sonic_romana = createItem(new ItemSonic(TSounds.sonic_generic), "sonic_romana");
 	public static Item sonic_lance = createItem(new ItemSonic(TSounds.sonic_generic), "sonic_lance");
 	public static Item sonic_lipstick = createItem(new ItemSonic(TSounds.sonic_generic), "sonic_lipstick");
 	public static Item sonic_trowel = createItem(new ItemSonic(TSounds.sonic_generic),"sonic_trowel");
 	public static Item sonic_pen = createItem(new ItemSonic(TSounds.sonic_generic), "sonic_pen");
 	
-	//TODO: Add the shrinky- killy thing
-	//public static Item player_victim = createItem(new ItemPlayerVictim(), "player_victim");
-	
-	//public static Item defabricator = createItem(new ItemDefabric(), "defabric");
+	public static Item tracker = createItem(new ItemTracker(), "tracker");
 
 	@SubscribeEvent
 	public static void regItems(RegistryEvent.Register<Item> event) {
@@ -128,10 +124,8 @@ public class TItems {
 		crushedCinnabar = createItem(new ItemBase(), "cinnabar");
 		hellbent_corridor = createItem(new ItemHellbentCorridor(), "hellbent_corridor");
 		hellbent_door = createItem(new ItemHellbentDoor(), "hellbent_door");
-
 		interior_door = createItem(new ItemInteriorDoor(), "interiordoor");
 		sonic13th = createItem(new ItemSonic(TSounds.sonic_generic), "sonic_screwdriver_13");
-	
 
 		// TARDIS Components
 		fluid_link = createItem(new ItemFluidLink(), "fluid_link");

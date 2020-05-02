@@ -132,7 +132,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public List<TardisControlFactory> controlClases = new ArrayList<>();
 	public int waypointIndex = 0;
 	public SpaceTimeCoord returnLocation = new SpaceTimeCoord(this.getLocation(), this.dimension, "");
-	public InteriorHum hum = InteriorHum.DEFAULT;
+	public InteriorHum hum = InteriorHum.BRACHACKI;
 	public boolean overrideStabilizers = false;
 	public boolean soundChanged = false;
 	private boolean isStealth = false;
@@ -193,8 +193,8 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				if(!world.isRemote)
 					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.BLOCKS, 1F, 1F);
 			
-			//In flight
-			if (((this.ticksToTravel > 220) || (this.totalTimeToTravel - this.ticksToTravel > 200)) && world.getTotalWorldTime() % 20 == 0 && this.isInFlight()) {
+			//In flight - Currently starts through the take off sound
+			if (((this.ticksToTravel > 210) || (this.ticksToTravel < (this.ticksToTravel - 210))) && world.getTotalWorldTime() % 30 == 0 && this.isInFlight()) {
 				if(!world.isRemote)
 					world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
 			}
