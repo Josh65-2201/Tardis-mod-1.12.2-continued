@@ -210,7 +210,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				if (TardisConfig.MISC.camShake && (this.ticksToTravel < 200 || this.totalTimeToTravel - this.ticksToTravel < 200)) {
 					for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, Block.FULL_BLOCK_AABB.offset(this.getPos()).grow(40))) {
 						player.rotationPitch += (rand.nextInt(10) - 5) * 0.1;
-						player.rotationYaw += (rand.nextInt(9) - 5) * 0.1;
+						player.rotationYaw += (rand.nextInt(10) - 5) * 0.1;
 					}
 				}
 				if (this.getCourseCorrect() != EnumCourseCorrect.NONE) {
