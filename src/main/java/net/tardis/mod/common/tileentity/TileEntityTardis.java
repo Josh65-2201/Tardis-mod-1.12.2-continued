@@ -194,10 +194,10 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.BLOCKS, 1F, 1F);
 			
 			//In flight
-			//if ((this.ticksToTravel > 200) {
-			//	if(!world.isRemote)
-			//		world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
-			//}
+			if (((this.ticksToTravel > 220) || (this.totalTimeToTravel - this.ticksToTravel > 200)) && world.getTotalWorldTime() % 20 == 0 && this.isInFlight()) {
+				if(!world.isRemote)
+					world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
+			}
 			
 			if (this.artron <= 0.0 && this.ticksToTravel % 5 == 0)
 				crash();
@@ -210,7 +210,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				if (TardisConfig.MISC.camShake && (this.ticksToTravel < 200 || this.totalTimeToTravel - this.ticksToTravel < 200)) {
 					for (EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, Block.FULL_BLOCK_AABB.offset(this.getPos()).grow(40))) {
 						player.rotationPitch += (rand.nextInt(10) - 5) * 0.1;
-						player.rotationYaw += (rand.nextInt(10) - 5) * 0.1;
+						player.rotationYaw += (rand.nextInt(9) - 5) * 0.1;
 					}
 				}
 				if (this.getCourseCorrect() != EnumCourseCorrect.NONE) {
