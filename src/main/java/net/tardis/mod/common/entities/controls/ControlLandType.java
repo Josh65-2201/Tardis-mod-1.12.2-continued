@@ -58,9 +58,6 @@ public class ControlLandType extends EntityControl {
 	@Override
 	public SoundEvent getUseSound() {
 		TileEntityTardis tardis = (TileEntityTardis) world.getTileEntity(this.getConsolePos());
-		return tardis.isFueling() ? TSounds.control_landing_type_up : TSounds.control_landing_type_down;
-
+		return TSounds.control_landing_type;
 	}
-
-
 }

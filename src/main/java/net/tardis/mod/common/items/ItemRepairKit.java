@@ -12,6 +12,8 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
+import net.tardis.mod.common.sounds.TSounds;
+import net.minecraft.util.SoundCategory;
 import net.tardis.mod.common.strings.TStrings;
 import net.tardis.mod.common.systems.TardisSystems.BaseSystem;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
@@ -27,6 +29,7 @@ public class ItemRepairKit extends ItemBase {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te != null && te instanceof TileEntityTardis) {
 			TileEntityTardis tardis = (TileEntityTardis) te;
+			worldIn.playSound(null, pos, TSounds.repair_kit, SoundCategory.PLAYERS, 1F, 1F);
 			for (BaseSystem sys : tardis.systems) {
 				if (sys.getHealth() > 0F) {
 					sys.setHealth(sys.getHealth() + 0.15F);

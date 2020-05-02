@@ -34,7 +34,7 @@ public class TDimensions {
 	public static DimensionType MOON_TYPE;
 	public static Biome BIOME_MOON = new BiomeMoon();
 	
-	//Space
+	//Time vortex
 	public static int TIMEVORTEX_ID;
 	public static DimensionType DIMTYPE_TIMEVORTEX;
 	
