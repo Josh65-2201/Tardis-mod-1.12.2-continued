@@ -41,15 +41,12 @@ public class MessageTardisFlight implements IMessage{
 				public void run() {
 					Entity entity = ctx.getServerHandler().player.getServerWorld().getEntityByID(message.id);
 					if(entity instanceof EntityTardis) {
-						entity.motionY += message.up ? 0.23 : -0.23;
+						entity.motionY += message.up ? 0.25 : -0.25;
 					}
 				}
 				
 			});
 			return null;
 		}
-		
-		
 	}
-
 }
