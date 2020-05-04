@@ -138,7 +138,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	private boolean isStealth = false;
 	private EntityTardis entity;
 	private HashMap<UUID, BlockPos> bedPositions = new HashMap<UUID, BlockPos>();
-	
+
 	//Effects
 	private int landingSoundDuration = 200;
 	
@@ -197,6 +197,11 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			if (((this.ticksToTravel > 210) || (this.ticksToTravel < (this.ticksToTravel - 210))) && world.getTotalWorldTime() % 30 == 0 && this.isInFlight()) {
 				if(!world.isRemote)
 					world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
+
+					//Infinite flight in the Time Vortex
+					if ((world.getTotalWorldTime() % 100 == 0) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
+						this.setDesination(this.getDestination().add(0, 1, 0), this.getTargetDim());
+					}
 			}
 			
 			if (this.artron <= 0.0 && this.ticksToTravel % 5 == 0)
@@ -282,10 +287,10 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			BlockPos nPos = Helper.isSafe(dWorld, getDestination(), this.facing) ? this.getDestination() : this.getLandingBlock(dWorld, getDestination());
 			
 			//WorldBorder safety checks
-			if(!dWorld.getWorldBorder().contains(nPos)) {
+			if (!dWorld.getWorldBorder().contains(nPos)) {
 				nPos = this.getLandingBlock(dWorld, new BlockPos(dWorld.getWorldBorder().getCenterX(), nPos.getY(), dWorld.getWorldBorder().getCenterZ()));
 			}
-			
+
 			if (nPos != null) {
 				//TARDIS in TARDIS Stuff
 				if (dWorld.getTileEntity(nPos.down()) instanceof TileEntityDoor) {
