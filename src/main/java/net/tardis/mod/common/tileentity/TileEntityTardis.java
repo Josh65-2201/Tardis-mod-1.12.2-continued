@@ -123,8 +123,9 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public int totalTimeToTravel;
 	public int rotorUpdate = 0;
 	public int frame = 0;
-	private boolean hadsEnabled = false, forceFields = false;
+	private boolean hadsEnabled = true, forceFields = false;
 	public int magnitude = 10;
+	private float Used = 0;
 	public EnumEvent currentEvent = EnumEvent.NONE;
 	public BaseSystem[] systems;
 	private EnumTardisState currentState = EnumTardisState.NORMAL;
@@ -175,10 +176,8 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		}
 		if (this.ticksToTravel > 0) {
 			--ticksToTravel;
-			
-			//Fuel use
-			if(this.ticksToTravel % 20 == 0)
-				this.artron -= this.calcFuelUse();
+
+			Artron(this.calcFuelUse());
 			
 			//land
 			if (ticksToTravel <= 0)
@@ -194,12 +193,12 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.BLOCKS, 1F, 1F);
 			
 			//In flight - Currently starts through the take off sound
-			if (((this.ticksToTravel > 210) || (this.ticksToTravel < (this.ticksToTravel - 210))) && world.getTotalWorldTime() % 30 == 0 && this.isInFlight()) {
+			if (((this.ticksToTravel > 210) || (this.ticksToTravel < (this.ticksToTravel - 150))) && world.getTotalWorldTime() % 30 == 0 && this.isInFlight()) {
 				if(!world.isRemote)
 					world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
 
 					//Infinite flight in the Time Vortex
-					if ((world.getTotalWorldTime() % 100 == 0) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
+					if ((this.totalTimeToTravel < 15) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
 						this.setDesination(this.getDestination().add(0, 1, 0), this.getTargetDim());
 					}
 			}
@@ -559,6 +558,11 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		}
 	}
 	
+	public void Artron(Float Used) {
+		if(world.getTotalWorldTime() % 20 == 0)
+			this.artron -= Used;
+	}
+
 	public void setAbsoluteDesination(BlockPos pos, int dimension) {
 		this.tardisDestination = pos.toImmutable();
 		this.destDim = dimension;
@@ -1025,7 +1029,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public float calcFuelUse() {
 		SystemStabilizers stab = this.getSystem(SystemStabilizers.class);
 		if(stab != null) {
-			return stab.getHealth() > 0.0F && stab.isOn() ? 1 : 0.5F;
+			return stab.getHealth() > 0.0F && stab.isOn() ? 1F : 3F;
 		}
 		return 1;
 	}

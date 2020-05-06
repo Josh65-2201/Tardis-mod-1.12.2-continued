@@ -203,13 +203,7 @@ public class BlockTardisTop extends BlockTileBase implements IRenderBox {
 
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		if(world.getTileEntity(pos) instanceof TileEntityDoor) {
-			TileEntityDoor door = (TileEntityDoor) world.getTileEntity(pos);
-			if (door != null && !door.isLocked()) {
-				return door.getLightLevel();
-			}
-		}
-		return super.getLightValue(state, world, pos);
+		return 5;
 	}
 	
 	@Override

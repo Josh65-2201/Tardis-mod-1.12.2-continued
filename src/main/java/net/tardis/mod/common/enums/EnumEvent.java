@@ -4,6 +4,6 @@ public enum EnumEvent {
 
 	NONE,
 	DALEK,
-	CYBER
+	CYBER;
 
 }
