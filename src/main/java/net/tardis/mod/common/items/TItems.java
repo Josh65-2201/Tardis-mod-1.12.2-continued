@@ -59,13 +59,10 @@ public class TItems {
 	public static Item hellbent_door = null;
 
 	public static Item interior_door = null;
-
 	public static Item sonic13th = null;
-
 	public static Item bessie = createItem(new ItemESpawn(EntityBessie::new), "bessie");
-
 	public static Item tardis_repairkit = createItem(new ItemRepairKit(), "tardis_repairkit");
-	
+
 	public static Item doors_brak = createItem(new ItemBrakDoors(EntityDoorsBrakSecondary::new), "brak_doors_closed");
 	public static Item repair_capsule = createItem(new ItemRepairCapsule(), "repair_capsule");
 

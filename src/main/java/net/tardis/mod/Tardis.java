@@ -150,7 +150,7 @@ public class Tardis {
 	@SidedProxy(clientSide = "net.tardis.mod.proxy.ClientProxy", serverSide = "net.tardis.mod.proxy.ServerProxy")
 	public static ServerProxy proxy;
 
-	public static void registerTileEntity(Class<? extends TileEntity> clazz, String name) {
+	public static void registerTileEntity(final Class<? extends TileEntity> clazz, final String name) {
 		GameRegistry.registerTileEntity(clazz, new ResourceLocation(Tardis.MODID, name));
 	}
 
@@ -159,7 +159,7 @@ public class Tardis {
 	}
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(final FMLPreInitializationEvent event) {
 		proxy.preInit();
 		TItems.init();
 		TBlocks.register();
@@ -184,7 +184,6 @@ public class Tardis {
 		EntityHelper.registerStatic(ControlMonitor.class, "monitor");
 		EntityHelper.registerStatic(ControlWaypoint.class, "waypoint_select");
 		EntityHelper.registerProjectiles(EntityLaserRay.class, "cyber_ray");
-		EntityHelper.registerNoSpawn(EntityCorridor.class, "toyota_corridor");
 		EntityHelper.registerNoSpawn(EntityHellbentCorridor.class, "hellbent_corridor");
 		EntityHelper.registerNoSpawn(EntityHellbentDoor.class, "hellbent_door");
 		EntityHelper.registerNoSpawn(EntityBessie.class, "bessie");
@@ -297,7 +296,7 @@ public class Tardis {
 		
 
 		TileEntitySonicWorkbench.RECIPES.put(TItems.key, new Item[]{TItems.key_01});
-		Item[] sonics = new Item[ItemSonic.SONICS.size()];
+		final Item[] sonics = new Item[ItemSonic.SONICS.size()];
 		for(int sonicID = 0; sonicID < sonics.length; ++sonicID) {
 			sonics[sonicID] = ItemSonic.SONICS.get(sonicID);
 		}
@@ -308,7 +307,7 @@ public class Tardis {
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event) {
+	public void init(final FMLInitializationEvent event) {
 		proxy.init();
 		// Ore Dictionary
 		OreDictionary.registerOre("oreUranium", TItems.power_cell);
@@ -330,9 +329,9 @@ public class Tardis {
 	}
 
 	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(final FMLPostInitializationEvent event) {
 		proxy.postInit();
-		for (ItemStack cinnabar : OreDictionary.getOres("dustCinnabar")) {
+		for (final ItemStack cinnabar : OreDictionary.getOres("dustCinnabar")) {
 			AlembicRecipe.registerRecipe(cinnabar.getItem(), TItems.mercuryBottle);
 		}
 		FileHelper.readOrWriteARS(configDir);
@@ -340,7 +339,7 @@ public class Tardis {
 	}
 
 	@EventHandler
-	public void serverStarting(FMLServerStartingEvent event) {
+	public void serverStarting(final FMLServerStartingEvent event) {
 		event.registerServerCommand(new TardisCommand());
 	}
 }
