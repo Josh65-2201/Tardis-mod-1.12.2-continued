@@ -62,23 +62,6 @@ public class ClientHandler {
 		}
 	}
 	
-	@SubscribeEvent
-	public static void overlayFuckup(RenderGameOverlayEvent.Post event) {
-		/*if(event.getType() == ElementType.ALL) {
-			GlStateManager.disableTexture2D();
-			double width = event.getResolution().getScaledWidth(),
-			height = event.getResolution().getScaledHeight();
-			BufferBuilder bb = Tessellator.getInstance().getBuffer();
-			bb.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
-			bb.pos(0, 0, 0).color(1F, 0.3F, 0.3F, 0.5F).endVertex();
-			bb.pos(0, height, 0).color(1F, 0.3F, 0.3F, 0.5F).endVertex();
-			bb.pos(width, height, 0).color(1F, 0.5F, 0.5F, 0.5F).endVertex();
-			bb.pos(width, 0, 0).color(1F, 0.3F, 0.3F, 0.5F).endVertex();
-			Tessellator.getInstance().draw();
-			GlStateManager.enableTexture2D();
-		}*/
-	}
-	
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public static void hidePlayer(RenderPlayerEvent.Pre event) {
 		Entity ride = event.getEntityPlayer().getRidingEntity();

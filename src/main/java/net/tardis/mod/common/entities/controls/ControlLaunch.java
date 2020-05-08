@@ -48,7 +48,7 @@ public class ControlLaunch extends EntityControl {
 				if (!tardis.isInFlight()) {
 					tardis.startFlight();
 				} else {
-					tardis.crash(false);
+					tardis.crash();
 				}
 			}
 		} else
