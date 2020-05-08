@@ -16,6 +16,7 @@ public class RenderLever extends RenderControl {
 	public RenderLever() {
 	}
 
+	//button Hitbox
 	@Override
 	public void renderControl(EntityControl entity, double x, double y, double z, float entityYaw, float partialTicks, TileEntityTardis tType) {
 		GlStateManager.pushMatrix();
@@ -27,10 +28,10 @@ public class RenderLever extends RenderControl {
 		TileEntity te = mc.world.getTileEntity(entity.getConsolePos());
 		if (te != null && te instanceof TileEntityTardis) {
 			TileEntityTardis tardis = (TileEntityTardis) te;
-			if (!tardis.isInFlight())
-				offset = Helper.convertToPixels(-0.5, -2.5, 0);
+			if (tardis.isInFlight())
+				offset = Helper.convertToPixels(-0.5, -1.5, 0);
 			else
-				offset = Helper.convertToPixels(-0.5, -1.5, -2);
+				offset = Helper.convertToPixels(-0.5, -2.5, 0);
 		}
 		GlStateManager.translate(offset.x, offset.y, offset.z);
 		model.render(null, 0, 0, 0, 0, 0, 0.0625F);

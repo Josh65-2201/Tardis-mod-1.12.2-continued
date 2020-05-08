@@ -201,7 +201,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			}
 			
 			if (this.artron <= 0.0 && this.ticksToTravel % 5 == 0)
-				crash();
+				crash(true);
 			
 			if (world.isRemote) {
 				if (TardisConfig.MISC.camShake && (this.ticksToTravel < 200 || this.totalTimeToTravel - this.ticksToTravel < 200)) {
@@ -219,7 +219,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			}
 			if (!world.isRemote) {
 				if (!this.getCanFly()) {
-					this.crash();
+					this.crash(false);
 				}
 			}
 		}
@@ -261,7 +261,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 
 	}
 			if(this.artron <= 0) {
-				crash();
+				crash(false);
 				entity.setDead();
 			}
 		}
@@ -638,6 +638,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	}
 	
 	public boolean getRWF() {
+		System.out.println(this.RWF);
 		return this.RWF;
 	}
 
@@ -861,10 +862,6 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		for (final BaseSystem s : systems) {
 			s.damage();
 		}
-	}
-	
-	public void crash() {
-		crash(true);
 	}
 	
 	public void startHADS() {
