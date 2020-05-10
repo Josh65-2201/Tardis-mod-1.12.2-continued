@@ -60,6 +60,6 @@ public class ControlDirection extends EntityControl {
 
 	@Override
 	public SoundEvent getUseSound() {
-		return TSounds.control_direction;
+		return TSounds.control_direction_toggle;
 	}
 }
