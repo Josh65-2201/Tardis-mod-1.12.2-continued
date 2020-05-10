@@ -19,22 +19,12 @@
       }
     ]
   },
-    "tardis_land": {
+    "land": {
     "category": "block",
     "subtitle": "tardis.subtitle.landing",
     "sounds": [
       {
-        "name": "tardis:tardis_land",
-        "stream": false
-      }
-    ]
-  },
-    "tardis_no_fuel": {
-    "category": "block",
-    "subtitle": "tardis.subtitle.nofuel",
-    "sounds": [
-      {
-        "name": "tardis:tardis_no_fuel",
+        "name": "tardis:land",
         "stream": false
       }
     ]
@@ -79,20 +69,22 @@
       }
     ]
   },
-    "control_direction": {
+  "control_dimension_toggle": {
     "category": "block",
-    "subtitle": "tardis.subtitle.control_direction",
+    "subtitle": "tardis.subtitle.control_dimension_toggle",
     "sounds": [
       {
-        "name": "tardis:controls/control_direction_one",
+        "name": "tardis:controls/control_dimension_toggle",
         "stream": false
-      },
-	  {
-        "name": "tardis:controls/control_direction_two",
-        "stream": false
-      },
-	  {
-        "name": "tardis:controls/control_direction_three",
+      }
+    ]
+  },
+    "control_direction_toggle": {
+    "category": "block",
+    "subtitle": "tardis.subtitle.control_direction_toggle",
+    "sounds": [
+      {
+        "name": "tardis:controls/control_direction_toggle",
         "stream": false
       }
     ]
@@ -123,24 +115,6 @@
     "sounds": [
       {
         "name": "tardis:controls/control_fast_return",
-        "stream": false
-      }
-    ]
-  },
-    "control_dimension": {
-    "category": "block",
-    "subtitle": "tardis.subtitle.control_dimension",
-    "sounds": [
-      {
-        "name": "tardis:controls/control_dimension_one",
-        "stream": false
-      },
-	  {
-        "name": "tardis:controls/control_dimension_two",
-        "stream": false
-      },
-	  {
-        "name": "tardis:controls/control_dimension_three",
         "stream": false
       }
     ]
@@ -235,15 +209,6 @@
       }
     ]
   },
-    "drum_beat": {
-    "category": "blocks",
-    "sounds": [
-      {
-        "name": "tardis:drum_beat",
-        "stream": false
-      }
-    ]
-  },
     "bessie_horn": {
     "category": "blocks",
     "subtitle": "tardis.subtitle.bessie.horn",
@@ -297,7 +262,7 @@
     "category": "blocks",
     "sounds": [
       {
-        "name": "tardis:int_door",
+        "name": "tardis:1963_int_door",
         "stream": false
       }
     ]
@@ -320,80 +285,62 @@
       }
     ]
   },
-    "control_generic_03": {
-    "category": "blocks",
+    "hum_toyota": {
+    "category": "ambient",
+    "subtitle": "tardis.subtitle.hum_toyota",
     "sounds": [
       {
-        "name": "tardis:controls/generic_03",
+        "name": "tardis:hums/toyota",
         "stream": false
       }
     ]
   },
-    "vm_teleport": {
+    "hum_coral": {
     "category": "ambient",
+    "subtitle": "tardis.subtitle.hum_coral",
     "sounds": [
       {
-        "name": "tardis:vm_teleport",
+        "name": "tardis:hums/coral",
         "stream": false
       }
     ]
   },
-    "interior_hum_toyota": {
+    "hum_copper": {
     "category": "ambient",
-    "subtitle": "tardis.subtitle.interior_hum_toyota",
+    "subtitle": "tardis.subtitle.hum_copper",
     "sounds": [
       {
-        "name": "tardis:interior_hum_toyota",
+        "name": "tardis:hums/copper",
         "stream": false
       }
     ]
   },
-    "interior_hum_coral": {
+    "hum_sharp": {
     "category": "ambient",
-    "subtitle": "tardis.subtitle.interior_hum_coral",
+    "subtitle": "tardis.subtitle.hum_sharp",
     "sounds": [
       {
-        "name": "tardis:interior_hum_coral",
+        "name": "tardis:hums/sharp",
         "stream": false
       }
     ]
   },
-    "interior_hum_copper": {
+    "hum_brachacki": {
     "category": "ambient",
-    "subtitle": "tardis.subtitle.interior_hum_copper",
+    "subtitle": "tardis.subtitle.hum_brachacki",
     "sounds": [
       {
-        "name": "tardis:interior_hum_copper",
+        "name": "tardis:hums/brachacki",
         "stream": false
       }
     ]
   },
-    "interior_hum_sharp": {
+    "hum_kelt": {
     "category": "ambient",
-    "subtitle": "tardis.subtitle.interior_hum_sharp",
+    "subtitle": "tardis.subtitle.hum_kelt",
     "sounds": [
       {
-        "name": "tardis:interior_hum_sharp",
-        "stream": false
-      }
-    ]
-  },
-    "interior_hum_brachacki": {
-    "category": "ambient",
-    "subtitle": "tardis.subtitle.interior_hum_brachacki",
-    "sounds": [
-      {
-        "name": "tardis:interior_hum_brachacki",
-        "stream": false
-      }
-    ]
-  },
-    "interior_hum_kelt": {
-    "category": "ambient",
-    "subtitle": "tardis.subtitle.interior_hum_kelt",
-    "sounds": [
-      {
-        "name": "tardis:interior_hum_kelt",
+        "name": "tardis:hums/kelt",
         "stream": false
       }
     ]
