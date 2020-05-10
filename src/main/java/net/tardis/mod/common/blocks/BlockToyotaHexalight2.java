@@ -8,14 +8,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.tardis.mod.common.blocks.interfaces.IARSBlock;
-import net.tardis.mod.common.tileentity.TileEntityTardis;
 
 import java.util.Random;
 
-public class BlockToyotaLight extends Block implements IARSBlock {
+public class BlockToyotaHexalight2 extends Block implements IARSBlock {
     private final boolean isOn;
 
-    public BlockToyotaLight(boolean isOn) {
+    public BlockToyotaHexalight2(boolean isOn) {
         super(Material.REDSTONE_LIGHT);
         this.isOn = isOn;
 
@@ -29,14 +28,11 @@ public class BlockToyotaLight extends Block implements IARSBlock {
      */
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        TileEntityTardis tardis = new TileEntityTardis();
         if (!worldIn.isRemote) {
-            if (!tardis.getCanFly() && (!this.isOn || this.isOn)) {
-                worldIn.setBlockState(pos, TBlocks.toyota_light_emergency.getDefaultState(), 2);
-            } else if (this.isOn && !worldIn.isBlockPowered(pos) && tardis.getCanFly()) {
-                worldIn.setBlockState(pos, TBlocks.toyota_light_off.getDefaultState(), 2);
-            } else if (!this.isOn && worldIn.isBlockPowered(pos) && tardis.getCanFly()) {
-                worldIn.setBlockState(pos, TBlocks.toyota_light_on.getDefaultState(), 2);
+            if (this.isOn && !worldIn.isBlockPowered(pos)) {
+                worldIn.setBlockState(pos, TBlocks.toyota_hexalight_off_2.getDefaultState(), 2);
+            } else if (!this.isOn && worldIn.isBlockPowered(pos)) {
+                worldIn.setBlockState(pos, TBlocks.toyota_hexalight_2.getDefaultState(), 2);
             }
         }
     }
@@ -53,26 +49,20 @@ public class BlockToyotaLight extends Block implements IARSBlock {
      */
     @Override
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-        TileEntityTardis tardis = new TileEntityTardis();
         if (!worldIn.isRemote) {
-            if (!tardis.getCanFly() && (!this.isOn || this.isOn)) {
-                worldIn.setBlockState(pos, TBlocks.toyota_light_emergency.getDefaultState(), 2);
-            } else if (this.isOn && !worldIn.isBlockPowered(pos) && tardis.getCanFly()) {
+            if (this.isOn && !worldIn.isBlockPowered(pos)) {
                 worldIn.scheduleUpdate(pos, this, 4);
-            } else if (!this.isOn && worldIn.isBlockPowered(pos) && tardis.getCanFly()) {
-                worldIn.setBlockState(pos, TBlocks.toyota_light_on.getDefaultState(), 2);
+            } else if (!this.isOn && worldIn.isBlockPowered(pos)) {
+                worldIn.setBlockState(pos, TBlocks.toyota_hexalight_2.getDefaultState(), 2);
             }
         }
     }
     
     @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-        TileEntityTardis tardis = new TileEntityTardis();
         if (!worldIn.isRemote) {
-            if (!tardis.getCanFly() && (!this.isOn || this.isOn)) {
-                worldIn.setBlockState(pos, TBlocks.toyota_light_emergency.getDefaultState(), 2);
-            } else if (this.isOn && !worldIn.isBlockPowered(pos) && tardis.getCanFly()) {
-                worldIn.setBlockState(pos, TBlocks.toyota_light_off.getDefaultState(), 2);
+            if (this.isOn && !worldIn.isBlockPowered(pos)) {
+                worldIn.setBlockState(pos, TBlocks.toyota_hexalight_off_2.getDefaultState(), 2);
             }
         }
     }
@@ -82,16 +72,16 @@ public class BlockToyotaLight extends Block implements IARSBlock {
      */
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(TBlocks.toyota_light_off);
+        return Item.getItemFromBlock(TBlocks.toyota_hexalight_off_2);
     }
     
     @Override
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return new ItemStack(TBlocks.toyota_light_off);
+        return new ItemStack(TBlocks.toyota_hexalight_off_2);
     }
     
     @Override
     protected ItemStack getSilkTouchDrop(IBlockState state) {
-        return new ItemStack(TBlocks.toyota_light_off);
+        return new ItemStack(TBlocks.toyota_hexalight_off_2);
     }
 }

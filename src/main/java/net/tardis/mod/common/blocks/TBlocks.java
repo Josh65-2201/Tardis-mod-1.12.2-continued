@@ -51,14 +51,15 @@ public class TBlocks {
 	public static Block toyota_hexagon_2 = register(new BlockToyota(false), "toyota_hexagon_2");
 	public static Block toyota_hexagon_3 = register(new BlockToyota(false), "toyota_hexagon_3");
 	public static Block toyota_hexagon_4 = register(new BlockToyota(false), "toyota_hexagon_4");
-	public static Block toyota_hexalight_1 = register(new BlockToyota(true), "toyota_hexalight_1");
-	public static Block toyota_hexalight_2 = register(new BlockToyota(true), "toyota_hexalight_2");
-	public static Block toyota_hexalight_3 = register(new BlockToyota(true), "toyota_hexalight_3");
-	public static Block toyota_hexalight_4 = register(new BlockToyota(true), "toyota_hexalight_4");
-	public static Block toyota_hexalight_off1 = register(new BlockToyota(false), "toyota_hexalight_off1");
-	public static Block toyota_hexalight_off2 = register(new BlockToyota(true), "toyota_hexalight_off2");
-	public static Block toyota_hexalight_off3 = register(new BlockToyota(false), "toyota_hexalight_off3");
-	public static Block toyota_light_emergency = register(new BlockToyota(true), "toyota_light_emergency");
+	public static Block toyota_hexalight_1 = register(new BlockToyotaHexalight1(true), "toyota_hexalight_1", false);
+	public static Block toyota_hexalight_2 = register(new BlockToyotaHexalight2(true), "toyota_hexalight_2", false);
+	public static Block toyota_hexalight_3 = register(new BlockToyotaHexalight3(true), "toyota_hexalight_3", false);
+	public static Block toyota_hexalight_4 = register(new BlockToyotaHexalight4(true), "toyota_hexalight_4", false);
+	public static Block toyota_hexalight_off_1 = register(new BlockToyotaHexalight1(false), "toyota_hexalight_off_1");
+	public static Block toyota_hexalight_off_2 = register(new BlockToyotaHexalight2(false), "toyota_hexalight_off_2");
+	public static Block toyota_hexalight_off_3 = register(new BlockToyotaHexalight3(false), "toyota_hexalight_off_3");
+	public static Block toyota_hexalight_off_4 = register(new BlockToyotaHexalight4(false), "toyota_hexalight_off_4");
+	public static Block toyota_light_emergency = register(new BlockToyotaLight(true), "toyota_light_emergency", false);
 	
 	public static Block toyota_light_off = register(new BlockToyotaLight(false), "toyota_light_off");
 	public static Block toyota_light_on = register(new BlockToyotaLight(true), "toyota_light_on", false);
@@ -68,7 +69,8 @@ public class TBlocks {
 	public static Block toyota_platform_top = register(new BlockToyota(false), "toyota_platform_top");
 	public static Block toyota_platform_light = register(new BlockToyota(true), "toyota_platform_light");
 	public static Block toyota_roof = register(new BlockToyota(false), "toyota_roof");
-	public static Block toyota_roof_light = register(new BlockToyota(true), "toyota_roof_light");
+	public static Block toyota_roof_light_on = register(new BlockToyotaRoofLight(true), "toyota_roof_light_on", false);
+	public static Block toyota_roof_light_off = register(new BlockToyotaRoofLight(false), "toyota_roof_light_off");
 	public static Block toyota_wall = register(new BlockToyota(false), "toyota_wall");
 	public static Block toyota_wallroundel_1 = register(new BlockToyota(true), "toyota_wallroundel_1");
 	public static Block toyota_wallroundel_2 = register(new BlockToyota(false), "toyota_wallroundel_2");

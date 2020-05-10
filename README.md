@@ -2,8 +2,3 @@
 
 ## Download:
 https://github.com/josh-65/Tardis-mod-1.12.2-continued/releases
-
-## Wiki:
-https://tardis-mod.com/books/deprecated-features
-
-

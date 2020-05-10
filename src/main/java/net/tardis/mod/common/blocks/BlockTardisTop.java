@@ -135,7 +135,7 @@ public class BlockTardisTop extends BlockTileBase implements IRenderBox {
 		super.onBlockAdded(worldIn, pos, state);
 		try {
 			if (!worldIn.isRemote) {
-				worldIn.playSound(null, pos, TSounds.tardis_land, SoundCategory.BLOCKS, 1F, 1F);
+				worldIn.playSound(null, pos, TSounds.land, SoundCategory.BLOCKS, 1F, 1F);
 			}
 		} catch (Exception e) {
 		}

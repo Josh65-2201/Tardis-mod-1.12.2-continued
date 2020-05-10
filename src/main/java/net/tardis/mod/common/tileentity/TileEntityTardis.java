@@ -52,6 +52,7 @@ import net.tardis.mod.client.models.consoles.ModelConsole;
 import net.tardis.mod.common.blocks.BlockArtronBank;
 import net.tardis.mod.common.blocks.BlockTardisTop;
 import net.tardis.mod.common.blocks.TBlocks;
+import net.tardis.mod.common.blocks.BlockToyotaLight;
 import net.tardis.mod.common.dimensions.TDimensions;
 import net.tardis.mod.common.entities.EntityTardis;
 import net.tardis.mod.common.entities.controls.ControlDimChange;
@@ -177,27 +178,35 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		if (this.ticksToTravel > 0) {
 			--ticksToTravel;
 			
+			//Fuel use
+			if(this.ticksToTravel % 20 == 0)
+				this.artron -= this.calcFuelUse();
+
+				if((this.ticksToTravel > (this.artron * 20)) && world.getTotalWorldTime() % 400 == 0)
+					world.playSound(null, this.getPos(), TSounds.cloister_bell, SoundCategory.BLOCKS, 2F, 1F);
+			
 			//land
 			if (ticksToTravel <= 0)
 				this.travel();
 			
 			if (this.ticksToTravel == 200) {
 				if(!world.isRemote)
-					world.playSound(null, this.getPos(), TSounds.tardis_land, SoundCategory.BLOCKS, 1F, 1F);
+					world.playSound(null, this.getPos(), TSounds.land, SoundCategory.BLOCKS, 1F, 1F);
 			}
 			
 			if (this.ticksToTravel == this.totalTimeToTravel - 1)
 				if(!world.isRemote)
 					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.BLOCKS, 1F, 1F);
 			
-			//In flight
-			if ((this.ticksToTravel > 210) && this.isInFlight() && world.getTotalWorldTime() % 40 == 0) {
-				world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
+			//In flight - Currently starts through the take off sound
+			if ((this.ticksToTravel > 210) && world.getTotalWorldTime() % 30 == 0 && this.isInFlight()) {
+				if(!world.isRemote)
+					world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
 
-				//Infinite flight in the Time Vortex
-				if ((this.totalTimeToTravel < 15) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
-					this.setDesination(this.getDestination().add(0, 1, 0), this.getTargetDim());
-				}
+					//Infinite flight in the Time Vortex
+					if ((this.ticksToTravel < 400) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
+						this.setDesination(this.getDestination().add(0, 1, 0), this.getTargetDim());
+					}
 			}
 			
 			if (this.artron <= 0.0 && this.ticksToTravel % 5 == 0)
@@ -358,9 +367,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				this.currentDimName = type.getName();
 			MinecraftForge.EVENT_BUS.post(new TardisLandEvent(this));
 			
-			world.playSound(null, this.getPos(), TSounds.drum_beat, SoundCategory.BLOCKS, 0.5F, 1F);
-			
-			for (final BaseSystem sys : this.systems) {
+			for (BaseSystem sys : this.systems) {
 				sys.wear();
 			}
 			

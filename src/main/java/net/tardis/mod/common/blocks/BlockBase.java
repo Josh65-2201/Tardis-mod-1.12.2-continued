@@ -19,7 +19,6 @@ public class BlockBase extends Block implements IARSBlock {
 		super(Material.IRON);
 		this.setHardness(5F);
 		setCreativeTab(TardisTabs.BLOCKS);
-		//TileEntityEgg.register(new ItemStack(this, 64));
 	}
 
 	@Override
