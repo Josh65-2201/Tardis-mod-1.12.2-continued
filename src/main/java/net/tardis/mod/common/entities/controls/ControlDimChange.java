@@ -80,7 +80,7 @@ public class ControlDimChange extends EntityControl {
 
 	@Override
 	public SoundEvent getUseSound() {
-		return TSounds.control_dimension;
+		return TSounds.control_dimension_toggle;
 	}
 
 }
