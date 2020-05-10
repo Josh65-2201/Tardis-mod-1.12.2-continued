@@ -38,7 +38,7 @@ public class BlockConsole extends BlockTileBase implements IRenderBox {
 
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return 15;
+		return 5;
 	}
 
 	@Override

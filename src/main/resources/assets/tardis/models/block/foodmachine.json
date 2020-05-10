@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "tardis:blocks/foodmachine/foodmachinetextures",
-		"particle": "tardis:blocks/foodmachine/foodmachinetextures"
+		"0": "tardis:blocks/foodmachine",
+		"particle": "tardis:blocks/foodmachine"
 	},
 	"elements": [
 		{
