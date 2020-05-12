@@ -21,7 +21,7 @@ public class ControlLaunch extends EntityControl {
 	
 	public ControlLaunch(World world) {
 		super(world);
-		this.setSize(0.125F, 0.125F, 0F);
+		this.setSize(0.125F, 0.125F);
 	}
 	
 	//Button hitboxes
