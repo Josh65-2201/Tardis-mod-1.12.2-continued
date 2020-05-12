@@ -52,7 +52,6 @@ import net.tardis.mod.client.models.consoles.ModelConsole;
 import net.tardis.mod.common.blocks.BlockArtronBank;
 import net.tardis.mod.common.blocks.BlockTardisTop;
 import net.tardis.mod.common.blocks.TBlocks;
-import net.tardis.mod.common.blocks.BlockToyotaLight;
 import net.tardis.mod.common.dimensions.TDimensions;
 import net.tardis.mod.common.entities.EntityTardis;
 import net.tardis.mod.common.entities.controls.ControlDimChange;
@@ -103,12 +102,11 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public int dimension = 0;
 	public int destDim = 0;
 	public int dimIndex = 0;
-	private boolean RWF = false;
+	public boolean RWF = false;
 	private static IBlockState blockBase = TBlocks.tardis.getDefaultState();
 	private IBlockState blockTop = TBlocks.tardis_top_tt.getDefaultState();
-	/**
-	 * Time To Travel in Blocks/Tick
-	 **/
+
+	//Time To Travel in Blocks/Tick
 	private static int MAX_TARDIS_SPEED = 8;
 	public NonNullList<SpaceTimeCoord> saveCoords = NonNullList.withSize(15, SpaceTimeCoord.ORIGIN);
 	public NonNullList<ItemStack> buffer = NonNullList.withSize(9, ItemStack.EMPTY);
@@ -116,7 +114,6 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	private float artron = 256F;
 	private float maxArtron = 256F;
 	private boolean isFueling = false;
-	private boolean shouldDelayLoop = true;
 	private Ticket tardisTicket;
 	private boolean chunkLoadTick = true;
 	public boolean landOnSurface = true;
@@ -141,9 +138,6 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	private boolean isStealth = false;
 	private EntityTardis entity;
 	private final HashMap<UUID, BlockPos> bedPositions = new HashMap<UUID, BlockPos>();
-
-	//Effects
-	private final int landingSoundDuration = 200;
 	
 	public TileEntityTardis() {
 		if (systems == null) {
@@ -176,14 +170,11 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			}
 		}
 		if (this.ticksToTravel > 0) {
-			--ticksToTravel;
-			
-			//Fuel use
-			if(this.ticksToTravel % 20 == 0)
-				this.artron -= this.calcFuelUse();
+			--ticksToTravel;			
 
-				if((this.ticksToTravel > (this.artron * 20)) && world.getTotalWorldTime() % 400 == 0)
-					world.playSound(null, this.getPos(), TSounds.cloister_bell, SoundCategory.BLOCKS, 2F, 1F);
+			//Fuel lower than travel time warn
+			if((this.ticksToTravel > (this.artron * 20)) && world.getTotalWorldTime() % 400 == 0)
+				world.playSound(null, this.getPos(), TSounds.cloister_bell, SoundCategory.BLOCKS, 2F, 1F);
 			
 			//land
 			if (ticksToTravel <= 0)
@@ -197,16 +188,10 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			if (this.ticksToTravel == this.totalTimeToTravel - 1)
 				if(!world.isRemote)
 					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.BLOCKS, 1F, 1F);
-			
-			//In flight - Currently starts through the take off sound
-			if ((this.ticksToTravel > 210) && world.getTotalWorldTime() % 30 == 0 && this.isInFlight()) {
-				if(!world.isRemote)
-					world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
 
-					//Infinite flight in the Time Vortex
-					if ((this.ticksToTravel < 400) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
-						this.setDesination(this.getDestination().add(0, 1, 0), this.getTargetDim());
-					}
+			//Infinite flight in the Time Vortex
+			if ((this.ticksToTravel < 400) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
+				this.setDesination(this.getDestination().add(0, 1, 0), this.getTargetDim());
 			}
 			
 			if (this.artron <= 0.0 && this.ticksToTravel % 5 == 0)
@@ -267,8 +252,8 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			this.setFueling(false);
 			if(world.getTotalWorldTime() % 40 == 0) {
 				world.playSound(null, this.getLocation(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
+			}
 
-	}
 			if(this.artron <= 0) {
 				crash(false);
 				entity.setDead();
@@ -376,7 +361,6 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				door.setBotiUpdate(true);
 			}
 		}
-		shouldDelayLoop = true;
 		
 		for (final BaseSystem sys : systems) {
 			sys.onUpdate(this.world, getPos());
@@ -645,13 +629,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	}
 	
 	public boolean getRWF() {
-		System.out.println(this.RWF);
 		return this.RWF;
-	}
-
-	public void setRWF(boolean S) {
-		this.RWF = S;
-		this.markDirty();
 	}
 
 	public void setSpaceTimeCoordnate(final SpaceTimeCoord co) {
@@ -671,7 +649,6 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			this.entity = null;
 		}
 		
-		this.shouldDelayLoop = true;
 		this.ticksToTravel = this.calcTimeToTravel();
 		this.totalTimeToTravel = this.ticksToTravel;
 		this.setFueling(false);
@@ -1104,9 +1081,6 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			entity.startRiding(null);
 			if(!(ride instanceof EntityTardis)) {
 				this.transferPlayer(ride, checkDoors);
-				//Auto camera change
-				Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
-				Minecraft.getMinecraft().gameSettings.fovSetting = 110F;
 			}
 
 		}

@@ -17,7 +17,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.relauncher.Side;
@@ -31,7 +30,6 @@ import net.tardis.mod.common.entities.controls.ControlDoor;
 import net.tardis.mod.common.enums.EnumFlightState;
 import net.tardis.mod.common.tileentity.TileEntityDoor;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
-import net.tardis.mod.common.sounds.TSounds;
 import net.tardis.mod.util.TardisTeleporter;
 
 public class EntityTardis extends Entity{
@@ -110,7 +108,7 @@ public class EntityTardis extends Entity{
 					}
 					
 					//Replace exterior
-					if(this.onGround || !this.hasNoGravity()) {
+					if(this.onGround || this.getPassengers().isEmpty()) {
 						++this.ticksOnGround;
 						if(this.ticksOnGround > 20) {
 							this.setDead();
@@ -150,9 +148,16 @@ public class EntityTardis extends Entity{
 	}
 
 	public void handleRider(final EntityLivingBase base) {
-		final Vec3d look = base.getLookVec().scale(0.3D);		
-		TileEntityTardis tardis = new TileEntityTardis();
-		tardis.setRWF(true);
+		final Vec3d look = base.getLookVec().scale(0.3D);
+
+		if(world.isRemote) {
+			//Auto camera change
+			Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
+			Minecraft.getMinecraft().gameSettings.fovSetting = 110F;
+			
+			TileEntityTardis tardis = new TileEntityTardis();
+			tardis.RWF = true;
+		}
 
 		if(base.moveForward > 0) {
 			this.rotationYaw = (rotationYaw + 30F) % 360;
@@ -225,9 +230,6 @@ public class EntityTardis extends Entity{
 	@Override
 	public void updatePassenger(final Entity passenger) {
 		super.updatePassenger(passenger);
-		//Auto camera change
-		Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
-		Minecraft.getMinecraft().gameSettings.fovSetting = 110F;
 
 		final double angle = Math.toRadians(-this.rotationYaw);
 		//Player position in RWF
@@ -247,8 +249,6 @@ public class EntityTardis extends Entity{
 						final WorldServer tardisWorld = ((WorldServer)world).getMinecraftServer().getWorld(TDimensions.TARDIS_ID);
 						if(tardisWorld != null) {
 							final BlockPos pos = getConsole().south();
-							TileEntityTardis tardis = new TileEntityTardis();
-							tardis.setRWF(false);
 							//TP back in to tardis after RWF
 							pass.setPosition(pos.getX() + 1.5, pos.getY(), pos.getZ() + 1.5);
 							if(pass instanceof EntityPlayerMP)
@@ -258,13 +258,18 @@ public class EntityTardis extends Entity{
 				});
 			}
 			else {
-				final double x = Math.sin(Math.toRadians(this.rotationYaw)), z = Math.cos(Math.toRadians(this.rotationYaw));
+				final double z = Math.cos(Math.toRadians(this.rotationYaw));
 				pass.setPosition(this.posX + z, this.posY, this.posZ + z);
 			}
 		}
-		//Auto camera change
-		Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
-		Minecraft.getMinecraft().gameSettings.fovSetting = 70F;
+		if(world.isRemote) {
+			//Auto camera change
+			Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
+			Minecraft.getMinecraft().gameSettings.fovSetting = 70F;
+			
+			TileEntityTardis tardis = new TileEntityTardis();
+			tardis.RWF = false;
+		}
 	}
 	
 	public IBlockState getBlockState() {
