@@ -72,16 +72,16 @@ public class BlockToyotaRoofLight extends Block implements IARSBlock {
      */
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(TBlocks.toyota_light_off);
+        return Item.getItemFromBlock(TBlocks.toyota_roof_light_off);
     }
     
     @Override
     public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-        return new ItemStack(TBlocks.toyota_light_off);
+        return new ItemStack(TBlocks.toyota_roof_light_off);
     }
     
     @Override
     protected ItemStack getSilkTouchDrop(IBlockState state) {
-        return new ItemStack(TBlocks.toyota_light_off);
+        return new ItemStack(TBlocks.toyota_roof_light_off);
     }
 }
