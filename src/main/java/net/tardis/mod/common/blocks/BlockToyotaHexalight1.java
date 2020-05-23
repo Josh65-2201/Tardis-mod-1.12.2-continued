@@ -19,7 +19,7 @@ public class BlockToyotaHexalight1 extends Block implements IARSBlock {
         this.isOn = isOn;
 
         if (isOn) {
-            this.setLightLevel(1.0F);
+            this.setLightLevel(0.5F);
         }
     }
 
