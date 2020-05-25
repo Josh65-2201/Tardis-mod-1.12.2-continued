@@ -154,9 +154,10 @@ public class EntityTardis extends Entity{
 			//Auto camera change
 			Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
 			Minecraft.getMinecraft().gameSettings.fovSetting = 110F;
+		
+			TileEntityTardis tardis = new TileEntityTardis();
+			tardis.setRWF(true);
 		}
-		TileEntityTardis tardis = new TileEntityTardis();
-		tardis.RWF = true;
 
 		if(base.moveForward > 0) {
 			this.rotationYaw = (rotationYaw + 30F) % 360;
@@ -265,9 +266,10 @@ public class EntityTardis extends Entity{
 			//Auto camera change
 			Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
 			Minecraft.getMinecraft().gameSettings.fovSetting = 70F;
+		
+			TileEntityTardis tardis = new TileEntityTardis();
+			tardis.setRWF(false);
 		}
-		TileEntityTardis tardis = new TileEntityTardis();
-		tardis.RWF = false;
 	}
 	
 	public IBlockState getBlockState() {
