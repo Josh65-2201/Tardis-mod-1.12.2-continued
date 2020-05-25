@@ -140,11 +140,6 @@ public class InteractionGeneral implements IScrew {
 	}
 	
 	@Override
-	public int energyRequired() {
-		return 5;
-	}
-	
-	@Override
 	public String getInfo() {
 		return "screwdriver.info.blocks";
 	}

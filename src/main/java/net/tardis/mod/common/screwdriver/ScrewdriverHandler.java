@@ -17,5 +17,8 @@ public class ScrewdriverHandler {
 		register(new InteractionGeneral());
 		register(new InteractionEntity());
 		register(new InteractionSignal());
+		register(new InteractionEpanel());
+		register(new InteractionRoomgen());
+		register(new InteractionLockdown());
 	}
 }

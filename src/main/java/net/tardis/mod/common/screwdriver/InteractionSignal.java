@@ -50,11 +50,6 @@ public class InteractionSignal implements IScrew {
 	public boolean causesCoolDown() {
 		return true;
 	}
-
-	@Override
-	public int energyRequired() {
-		return 5;
-	}
 	
 	@Override
 	public String getInfo() {
