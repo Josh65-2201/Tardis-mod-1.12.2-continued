@@ -24,7 +24,7 @@ public class GuiMonitor extends GuiScreen{
 	private TileEntityTardis tardis;
 
 	private static int guiWidth = 242;
-	private static int guiHeigt = 132;
+	private static int guiHeight = 132;
 	
 	public GuiMonitor(TileEntityTardis tardis) {
 		this.tardis = tardis;
@@ -41,7 +41,7 @@ public class GuiMonitor extends GuiScreen{
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 		this.drawDefaultBackground();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURE);
-		this.drawTexturedModalRect(width / 2 - 242 / 2, height / 2 - 132 / 2, 0, 0, 242, 132);
+		this.drawTexturedModalRect(width / 2 - 242 / 2, height / 2 - 132 / 2, 0, 0, guiWidth, guiHeight);
 		this.drawCenteredString(Minecraft.getMinecraft().fontRenderer, "Protocols", width / 2, height / 2 - 55, 0xFFFFFF);
 		super.drawScreen(mouseX, mouseY, partialTicks);
 	}
@@ -84,7 +84,7 @@ public class GuiMonitor extends GuiScreen{
 		return guiWidth;
 	}
 
-	public static int getGuiHeigt() {
-		return guiHeigt;
+	public static int getGuiHeight() {
+		return guiHeight;
 	}
 }
