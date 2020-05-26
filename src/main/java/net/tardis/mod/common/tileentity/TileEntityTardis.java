@@ -123,7 +123,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public int totalTimeToTravel;
 	public int rotorUpdate = 0;
 	public int frame = 0;
-	private boolean hadsEnabled = false, forceFields = false;
+	private boolean hadsEnabled = true, forceFields = false;
 	public int magnitude = 10;
 	public EnumEvent currentEvent = EnumEvent.NONE;
 	public BaseSystem[] systems;
@@ -169,13 +169,14 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				soundChanged = false;
 			}
 		}
-		if (this.ticksToTravel > 0) {
-			--ticksToTravel;			
+		//Fuel lower than travel time warn
+		if((this.ticksToTravel > (this.artron * 20) || !this.getCanFly()) && world.getTotalWorldTime() % 400 == 0)
+			world.playSound(null, this.getPos(), TSounds.cloister_bell, SoundCategory.BLOCKS, 2F, 1F);
 
-			//Fuel lower than travel time warn
-			if((this.ticksToTravel > (this.artron * 20)) && world.getTotalWorldTime() % 400 == 0)
-				world.playSound(null, this.getPos(), TSounds.cloister_bell, SoundCategory.BLOCKS, 2F, 1F);
-			
+		if (this.ticksToTravel > 0) {
+			--ticksToTravel;
+			this.getDoor().setOpen(false);
+
 			//land
 			if (ticksToTravel <= 0)
 				this.travel();
@@ -644,7 +645,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	
 	public boolean startFlight() {
 		final TardisTakeOffEvent event = new TardisTakeOffEvent(this);
-		if (MinecraftForge.EVENT_BUS.post(event) || event.getFuel() <= 0.0F || event.getDestination() == null || event.getDestination() == BlockPos.ORIGIN || !getCanFly()) {
+		if (MinecraftForge.EVENT_BUS.post(event) || event.getFuel() <= 0.0F || event.getDestination() == null || event.getDestination() == BlockPos.ORIGIN || !getCanFly() || this.getDoor().isOpen()) {
 			world.playSound(null, this.getPos(), TSounds.engine_stutter, SoundCategory.BLOCKS, 1F, 1F);
 			return false;
 		}

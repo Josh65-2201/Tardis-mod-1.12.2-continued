@@ -196,7 +196,14 @@ public class TileEntityDoor extends TileEntity implements ITickable, IInventory,
 			--openingTicks;
 		if (isRemat) {
 			if (alpha < 1.0F) {
+				if (alpha <= 0.0F) {
+					TileEntityTardis e = new TileEntityTardis();
+					world.playSound(null, this.getPos(), TSounds.land, SoundCategory.AMBIENT, 1F, 1F);
+				}
+
+				//remat animation
 				alpha += 0.005F;
+
 				if (!world.isRemote) {
 					for (Entity e : world.getEntitiesWithinAABB(Entity.class, aabb.offset(this.getPos().down()))) {
 						try {
@@ -213,7 +220,14 @@ public class TileEntityDoor extends TileEntity implements ITickable, IInventory,
 			}
 		}
 		if (isDemat) {
+			if (alpha >= 1.0F) {
+				TileEntityTardis e = new TileEntityTardis();
+				world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.AMBIENT, 1F, 1F);
+			}
+
+			//demat animation
 			alpha -= 0.005F;
+
 			if (alpha <= 0) {
 				this.isDemat = false;
 				this.world.setBlockState(this.getPos(), Blocks.AIR.getDefaultState());

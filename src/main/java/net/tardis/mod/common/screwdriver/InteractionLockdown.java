@@ -21,6 +21,11 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.tardis.mod.Tardis;
 import net.tardis.mod.common.blocks.TBlocks;
 import net.tardis.mod.common.blocks.BlockEPanel;
+import net.tardis.mod.common.dimensions.TDimensions;
+import net.tardis.mod.common.tileentity.TileEntityTardis;
+import net.tardis.mod.common.systems.SystemStabilizers;
+import net.tardis.mod.util.common.helpers.Helper;
+import net.tardis.mod.util.common.helpers.TardisHelper;
 import net.tardis.mod.util.common.helpers.PlayerHelper;
 
 import java.lang.reflect.InvocationTargetException;
@@ -30,11 +35,26 @@ import static net.minecraft.init.Blocks.REDSTONE_LAMP;
 
 @Mod.EventBusSubscriber(modid = Tardis.MODID)
 public class InteractionLockdown implements IScrew {
-	
-	private Method dispense = ReflectionHelper.findMethod(BlockDispenser.class, "dispense", "func_176439_d", World.class, BlockPos.class);
 
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
+		if (!world.isRemote) {
+			TileEntityTardis e = new TileEntityTardis();
+			if (!player.isSneaking()) {
+				if (TardisHelper.hasTardis(player.getGameProfile().getId())) {
+					TileEntityTardis tardis = Helper.getTardis(world.getMinecraftServer().getWorld(TDimensions.TARDIS_ID).getTileEntity(TardisHelper.getTardis(player.getGameProfile().getId())));
+
+					tardis.getSystem(SystemStabilizers.class).setOn(true);
+					tardis.setDesination(world.getSpawnPoint(), 0);
+					tardis.getDoor().setOpen(false);
+					tardis.startFlight();
+					//message
+					return EnumActionResult.SUCCESS;
+				}
+				PlayerHelper.sendMessage(player, "screw.fail.noTardis", true);
+				return EnumActionResult.FAIL;
+			}
+		}
 		return EnumActionResult.FAIL;
 	}
 	
@@ -44,7 +64,6 @@ public class InteractionLockdown implements IScrew {
 		
 		Block block = state.getBlock();
 		
-		PlayerHelper.sendMessage(player, "TARDIS Lockdown not yet avaliable", true);
 		return EnumActionResult.FAIL;
 	}
 	
