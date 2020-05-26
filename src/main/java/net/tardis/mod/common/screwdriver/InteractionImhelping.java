@@ -20,25 +20,24 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.tardis.mod.Tardis;
 import net.tardis.mod.common.blocks.TBlocks;
-import net.tardis.mod.common.tileentity.TileEntityEPanel;
-import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.common.blocks.BlockEPanel;
+import net.tardis.mod.common.dimensions.TDimensions;
+import net.tardis.mod.common.tileentity.TileEntityTardis;
+import net.tardis.mod.util.common.helpers.Helper;
+import net.tardis.mod.util.common.helpers.TardisHelper;
 import net.tardis.mod.util.common.helpers.PlayerHelper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import static net.minecraft.init.Blocks.REDSTONE_LAMP;
+
 @Mod.EventBusSubscriber(modid = Tardis.MODID)
-public class InteractionEpanel implements IScrew {
-	
-	private Method dispense = ReflectionHelper.findMethod(BlockDispenser.class, "dispense", "func_176439_d", World.class, BlockPos.class);
-	
-	private int Emode = 0;
-	private int Max = 2;
+public class InteractionImhelping implements IScrew {
 
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
-		return EnumActionResult.FAIL;
+		return EnumActionResult.SUCCESS;
 	}
 	
 	@Override
@@ -47,23 +46,6 @@ public class InteractionEpanel implements IScrew {
 		
 		Block block = state.getBlock();
 		
-		if (block instanceof BlockEPanel) {
-			if (Emode >= Max)
-				Emode = 0;
-			else
-				Emode ++;
-
-			if (Emode == 0) {
-				world.setBlockState(pos, TBlocks.epanel_item.getDefaultState(), 2);
-			} else if (Emode == 1) {
-				world.setBlockState(pos, TBlocks.epanel_light.getDefaultState(), 2);
-				//pos.down()
-			} else if (Emode == 2) {
-				world.setBlockState(pos, TBlocks.epanel_room.getDefaultState(), 2);
-			}
-			return EnumActionResult.SUCCESS;
-		}
-
 		return EnumActionResult.FAIL;
 	}
 	
@@ -79,12 +61,12 @@ public class InteractionEpanel implements IScrew {
 	
 	@Override
 	public String getName() {
-		return "screw.epanel";
+		return "screw.imhelping";
 	}
 	
 	@Override
 	public int getCoolDownAmount() {
-		return 20;
+		return 10;
 	}
 	
 	@Override
@@ -94,7 +76,7 @@ public class InteractionEpanel implements IScrew {
 	
 	@Override
 	public String getInfo() {
-		return "screwdriver.info.epanel";
+		return "screwdriver.info.imhelping";
 	}
 	
 	

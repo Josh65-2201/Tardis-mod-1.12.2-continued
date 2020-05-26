@@ -14,6 +14,7 @@ public class ScrewdriverHandler {
 	}
 
 	public static void init() {
+		register(new InteractionImhelping());
 		register(new InteractionGeneral());
 		register(new InteractionEntity());
 		register(new InteractionSignal());
