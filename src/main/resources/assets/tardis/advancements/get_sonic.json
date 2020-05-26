@@ -1,0 +1,85 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Sonic goes *BUZZZ*",
+            "color": "white",
+            "bold": false
+        },
+        "description": {
+            "text": "You made a sonic screwdriver",
+            "color": "white"
+        },
+        "icon": {
+            "item": "tardis:sonic_screwdriver"
+        },
+        "frame": "challenge",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "Get Sonic": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "tardis:sonic_second",
+                        "count": {
+                            "min": 0,
+                            "max": 0
+                        }
+                    },
+                    {
+                        "item": "tardis:sonic_third"
+                    },
+                    {
+                        "item": "tardis:sonic_fourth"
+                    },
+                    {
+                        "item": "tardis:sonic_fifth"
+                    },
+                    {
+                        "item": "tardis:sonic_seven"
+                    },
+                    {
+                        "item": "tardis:sonic_10"
+                    },
+                    {
+                        "item": "tardis:sonic_screwdriver_13"
+                    },
+                    {
+                        "item": "tardis:sonic_screwdriver"
+                    },
+                    {
+                        "item": "tardis:sonic_cane"
+                    },
+                    {
+                        "item": "tardis:sonic_pen"
+                    },
+                    {
+                        "item": "tardis:sonic_trowel"
+                    },
+                    {
+                        "item": "tardis:sonic_lipstick"
+                    },
+                    {
+                        "item": "tardis:sonic_war"
+                    },
+                    {
+                        "item": "tardis:sonic_romana"
+                    },
+                    {
+                        "item": "tardis:sonic_lance"
+                    }
+                ]
+            }
+        }
+    },
+    "requirements": [
+        [
+            "Get Sonic"
+        ]
+    ],
+    "parent": "tardis:enter_tardis"
+}

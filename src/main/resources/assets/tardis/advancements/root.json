@@ -1,0 +1,30 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "New Tardis mod",
+            "color": "blue"
+        },
+        "description": {
+            "text": ""
+        },
+        "icon": {
+            "item": "tardis:tardis_top"
+        },
+        "frame": "task",
+        "show_toast": false,
+        "announce_to_chat": false,
+        "hidden": false,
+        "background": "tardis:textures/advancements/background.png"
+    },
+    "criteria": {
+        "Create Menu": {
+            "trigger": "minecraft:tick"
+        }
+    },
+    "requirements": [
+        [
+            "Create Menu"
+        ]
+    ]
+}

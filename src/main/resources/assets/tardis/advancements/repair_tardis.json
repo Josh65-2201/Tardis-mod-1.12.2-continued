@@ -1,0 +1,33 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "A good pilot",
+            "color": "green",
+            "bold": true
+        },
+        "description": {
+            "text": "You repaired your Tardis",
+            "color": "white",
+            "bold": false
+        },
+        "icon": {
+            "item": "tardis:tardis_repairkit"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "Repair Tardis": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "Repair Tardis"
+        ]
+    ],
+    "parent": "tardis:enter_tardis"
+}
