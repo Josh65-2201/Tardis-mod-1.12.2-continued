@@ -170,7 +170,6 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				soundChanged = false;
 			}
 		}
-
 		//Fuel lower than travel time warn
 		if((this.ticksToTravel > (this.artron * 20) || !this.getCanFly()) && world.getTotalWorldTime() % 400 == 0)
 			world.playSound(null, this.getPos(), TSounds.cloister_bell, SoundCategory.BLOCKS, 2F, 1F);
@@ -193,7 +192,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.AMBIENT, 1F, 1F);
 
 			//Infinite flight in the Time Vortex
-			if ((this.ticksToTravel < 600) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
+			if ((this.ticksToTravel < 400) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
 				this.setDesination(this.getDestination().add(0, 1, 0), this.getTargetDim());
 			}
 			
