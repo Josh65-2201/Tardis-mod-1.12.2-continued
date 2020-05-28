@@ -122,8 +122,7 @@ public class TileEntityTardisCoral extends TileEntity implements ITickable {
 				}
 			}
 		}
-		getWorld().setBlockToAir(getPos()); //Just to make sure Coral goes bye bye
-		//It doesn't
+		getWorld().setBlockToAir(getPos());
 	}
 
 	public void setOwner(UUID id) {
