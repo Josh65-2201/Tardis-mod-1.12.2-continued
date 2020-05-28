@@ -1,5 +1,6 @@
 package net.tardis.mod.common.screwdriver;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockDoor;
@@ -49,6 +50,7 @@ public class InteractionLockdown implements IScrew {
 					tardis.getDoor().setOpen(false);
 					tardis.startFlight();
 					//message
+					Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:sonic_lockdown");
 					return EnumActionResult.SUCCESS;
 				}
 				PlayerHelper.sendMessage(player, "screw.fail.noTardis", true);
