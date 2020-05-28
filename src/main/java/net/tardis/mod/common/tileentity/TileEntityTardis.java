@@ -175,8 +175,12 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 
 		if (this.ticksToTravel > 0) {
 			--ticksToTravel;
-			this.getDoor().setOpen(false);
+			this.getDoor().setOpen(false);		
 
+			//Fuel lower than travel time warn
+			if((this.ticksToTravel > (this.artron * 20)) && world.getTotalWorldTime() % 400 == 0)
+				world.playSound(null, this.getPos(), TSounds.cloister_bell, SoundCategory.BLOCKS, 2F, 1F);
+			
 			//land
 			if (ticksToTravel <= 0)
 				this.travel();
@@ -645,6 +649,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	
 	public boolean startFlight() {
 		final TardisTakeOffEvent event = new TardisTakeOffEvent(this);
+
 		if (MinecraftForge.EVENT_BUS.post(event) || event.getFuel() <= 0.0F || event.getDestination() == null || event.getDestination() == BlockPos.ORIGIN || !getCanFly() || this.getDoor().isOpen()) {
 			world.playSound(null, this.getPos(), TSounds.engine_stutter, SoundCategory.BLOCKS, 1F, 1F);
 			return false;
