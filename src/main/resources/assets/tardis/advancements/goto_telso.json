@@ -2,10 +2,10 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Advancement"
+            "text": "Telso"
         },
         "description": {
-            "text": "Description"
+            "text": "You went to Telso"
         },
         "icon": {
             "item": "minecraft:stone"
@@ -15,6 +15,18 @@
         "announce_to_chat": true,
         "hidden": false
     },
-    "criteria": {},
+    "criteria": {
+        "goto telso": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "dimension": "telos"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "goto telso"
+        ]
+    ],
     "parent": "tardis:enter_tardis"
 }

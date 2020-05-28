@@ -2,15 +2,13 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Home?",
-            "color": "white"
+            "text": "you redecorated"
         },
         "description": {
-            "text": "Land on Gallifrey",
-            "color": "white"
+            "text": "You changed your interior"
         },
         "icon": {
-            "item": "tardis:gallifreyan_sand"
+            "item": "tardis:tree_egg"
         },
         "frame": "task",
         "show_toast": true,
@@ -18,16 +16,13 @@
         "hidden": false
     },
     "criteria": {
-        "goto Gallifrey": {
-            "trigger": "minecraft:location",
-            "conditions": {
-                "dimension": "gallifrey"
-            }
+        "change interior": {
+            "trigger": "minecraft:impossible"
         }
     },
     "requirements": [
         [
-            "goto Gallifrey"
+            "change interior"
         ]
     ],
     "parent": "tardis:enter_tardis"

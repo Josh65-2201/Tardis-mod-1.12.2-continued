@@ -2,15 +2,13 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Home?",
-            "color": "white"
+            "text": "Exterminated"
         },
         "description": {
-            "text": "Land on Gallifrey",
-            "color": "white"
+            "text": "You exterminated a Dalek"
         },
         "icon": {
-            "item": "tardis:gallifreyan_sand"
+            "item": "tardis:ray_gun"
         },
         "frame": "task",
         "show_toast": true,
@@ -18,17 +16,25 @@
         "hidden": false
     },
     "criteria": {
-        "goto Gallifrey": {
-            "trigger": "minecraft:location",
+        "Killed a Dalek": {
+            "trigger": "minecraft:player_killed_entity",
             "conditions": {
-                "dimension": "gallifrey"
+                "entity": {
+                    "type": "tardis:dalek"
+                }
             }
         }
     },
     "requirements": [
         [
-            "goto Gallifrey"
+            "Killed a Dalek"
         ]
     ],
-    "parent": "tardis:enter_tardis"
+    "rewards": {
+        "recipes": [
+            "tardis:dalek_raygun"
+        ],
+        "experience": 10
+    },
+    "parent": "tardis:root"
 }

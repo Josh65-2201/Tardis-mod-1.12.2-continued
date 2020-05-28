@@ -2,15 +2,13 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Home?",
-            "color": "white"
+            "text": "Deleted"
         },
         "description": {
-            "text": "Land on Gallifrey",
-            "color": "white"
+            "text": "You deleted a Cyberman"
         },
         "icon": {
-            "item": "tardis:gallifreyan_sand"
+            "item": "tardis:cyberman_icon"
         },
         "frame": "task",
         "show_toast": true,
@@ -18,17 +16,22 @@
         "hidden": false
     },
     "criteria": {
-        "goto Gallifrey": {
-            "trigger": "minecraft:location",
+        "killed Cybermen": {
+            "trigger": "minecraft:player_killed_entity",
             "conditions": {
-                "dimension": "gallifrey"
+                "entity": {
+                    "type": "tardis:invasion_cyberman"
+                }
             }
         }
     },
     "requirements": [
         [
-            "goto Gallifrey"
+            "killed Cybermen"
         ]
     ],
-    "parent": "tardis:enter_tardis"
+    "rewards": {
+        "experience": 10
+    },
+    "parent": "tardis:root"
 }

@@ -2,10 +2,10 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Goodbye"
+            "text": "Christmas?"
         },
         "description": {
-            "text": "You sent your TARDIS to fade"
+            "text": "Definetly christmas"
         },
         "icon": {
             "item": "minecraft:stone"
@@ -16,14 +16,23 @@
         "hidden": false
     },
     "criteria": {
-        "sonic_lockdown": {
+        "Goto Trenzalore": {
+            "trigger": "minecraft:location"
+        },
+        "Time christmas": {
             "trigger": "minecraft:impossible"
         }
     },
     "requirements": [
         [
-            "sonic_lockdown"
+            "Goto Trenzalore"
+        ],
+        [
+            "Time christmas"
         ]
     ],
-    "parent": "tardis:get_sonic"
+    "rewards": {
+        "experience": 10
+    },
+    "parent": "tardis:where_no_man_goes"
 }

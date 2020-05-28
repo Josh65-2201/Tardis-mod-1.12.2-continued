@@ -33,7 +33,16 @@
             "tardis:sonic_screwdriver",
             "tardis:sonic_pen",
             "tardis:sonic_cane",
-            "tardis:sonic_workbench"
+            "tardis:sonic_workbench",
+            "tardis:tardis_key",
+            "tardis:repair_capsule",
+            "tardis:antenna",
+            "tardis:chameleon_circuit",
+            "tardis:temporal_circuits",
+            "tardis:thermocouplings",
+            "tardis:fluid_links",
+            "tardis:demat_circuit",
+            "tardis:tvg"
         ]
     },
     "parent": "tardis:create_coral"
