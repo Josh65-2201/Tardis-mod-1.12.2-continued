@@ -99,6 +99,7 @@ import net.tardis.mod.common.tileentity.TileEntityEgg;
 import net.tardis.mod.common.tileentity.TileEntityFoodMachine;
 import net.tardis.mod.common.tileentity.TileEntityHellbentLight;
 import net.tardis.mod.common.tileentity.TileEntityLight;
+import net.tardis.mod.common.tileentity.TileEntityInvislight;
 import net.tardis.mod.common.tileentity.TileEntityMultiblock;
 import net.tardis.mod.common.tileentity.TileEntityMultiblockMaster;
 import net.tardis.mod.common.tileentity.TileEntitySonicWorkbench;
@@ -134,7 +135,7 @@ import net.tardis.mod.util.common.helpers.EntityHelper;
 import net.tardis.mod.util.common.helpers.FileHelper;
 
 
-@Mod(modid = Tardis.MODID, name = Tardis.NAME, version = Tardis.VERSION, dependencies = Tardis.DEP)
+@Mod(modid = Tardis.MODID, name = Tardis.NAME, version = Tardis.VERSION, dependencies = Tardis.DEP, updateJSON = "https://raw.githubusercontent.com/josh-65/Tardis-mod-1.12.2-continued/master/update.json")
 public class Tardis {
 
 	public static final String MODID = "tardis";
@@ -235,6 +236,8 @@ public class Tardis {
 		registerTileEntity(TileEntitySonicWorkbench.class, "sonic_workbench");
 		registerTileEntity(TileEntityEgg.class, "ars_egg");
 		registerTileEntity(TileEntityTractorBeam.class, "tractor_beam");
+
+		registerTileEntity(TileEntityInvislight.class, "Invislight");
 
 		NetworkHandler.init();
 		ScrewdriverHandler.init();
