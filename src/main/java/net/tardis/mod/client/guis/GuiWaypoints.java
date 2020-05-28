@@ -54,9 +54,9 @@ public class GuiWaypoints extends GuiScreen {
 
 	@Override
 	public void initGui() {
-		this.addButton(save = addButton(0, "Save a new Waypoint"));
-		this.addButton(load = addButton(1, "Load current Waypoint"));
-		this.addButton(delete = addButton(2, "Delete current Waypoint"));
+		this.addButton(delete = addButton(4, "Delete current Waypoint"));
+		this.addButton(save = addButton(2, "Save a new Waypoint"));
+		this.addButton(load = addButton(0, "Load current Waypoint"));
 	}
 
 	public ButtonMonitor addButton(int id, String text) {
