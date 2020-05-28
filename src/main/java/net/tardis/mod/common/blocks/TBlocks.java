@@ -86,7 +86,9 @@ public class TBlocks {
 	
 	public static Block sonicRedstone;
 	
-	public static Block electric_panel = register(new BlockEPanel(), "electric_panel");
+	public static Block epanel_item = register(new BlockEPanel(), "epanel_item");
+	public static Block epanel_light = register(new BlockEPanel(), "epanel_light", false);
+	public static Block epanel_room = register(new BlockEPanel(), "epanel_room", false);
 	
 	public static Block cinnabar_ore = register(new BlockItemDrop(() -> new ItemStack(TItems.crushedCinnabar), 1, 1), "cinnabar_ore");
 	public static Block tardis_coral = register(new BlockTardisCoral(), "tardis_coral");

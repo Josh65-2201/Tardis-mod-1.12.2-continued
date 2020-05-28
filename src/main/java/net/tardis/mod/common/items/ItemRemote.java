@@ -44,6 +44,7 @@ public class ItemRemote extends ItemBase {
 	@Override
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
+		
 		if (te != null && te instanceof TileEntityTardis) {
 			setConsolePos(player.getHeldItem(hand), pos);
 			return EnumActionResult.SUCCESS;
@@ -58,9 +59,7 @@ public class ItemRemote extends ItemBase {
 				worldIn.playSound(null, pos, TSounds.remote_accept, SoundCategory.PLAYERS, 1.0F, 1.0F);
 			}
 		}
-		
 		return EnumActionResult.SUCCESS;
-		
 	}
 	
 	@Override
