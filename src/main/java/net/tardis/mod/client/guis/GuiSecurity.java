@@ -12,7 +12,11 @@ import net.tardis.mod.common.systems.TardisSystems;
 import net.tardis.mod.common.systems.TardisSystems.BaseSystem;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.network.NetworkHandler;
-import net.tardis.mod.network.packets.MessageDamageSystem;
+import net.tardis.mod.network.packets.MessageProtocol;
+import net.tardis.mod.common.protocols.ProtocolEmerEscape;
+import net.tardis.mod.common.protocols.ProtocolForcefield;
+import net.tardis.mod.common.protocols.ProtocolStealth;
+import net.tardis.mod.common.protocols.TardisProtocol;
 
 public class GuiSecurity extends GuiScreen{
 
@@ -53,7 +57,8 @@ public class GuiSecurity extends GuiScreen{
 			Minecraft.getMinecraft().displayGuiScreen(null);
 		});
 		this.addButton(addButton(0, "> Stealth")).addAction(() -> {
-			Minecraft.getMinecraft().displayGuiScreen(null);
+			NetworkHandler.NETWORK.sendToServer(new MessageProtocol(tardis.getPos(), TardisProtocol.register(new ProtocolStealth())));
+			TardisProtocol.register(new ProtocolStealth()).onActivated(Minecraft.getMinecraft().world, tardis);
 		});
 	}
 	
