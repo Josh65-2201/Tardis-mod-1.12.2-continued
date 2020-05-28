@@ -13,13 +13,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.tardis.mod.common.blocks.TBlocks;
+import net.tardis.mod.common.screwdriver.InteractionEpanel;
 import net.tardis.mod.util.common.helpers.TardisHelper;
 
 import javax.annotation.Nullable;
 
 public class TileEntityEPanel extends TileEntity implements ITickable, IInventory {
 
-	private int stateID = Block.getStateId(TBlocks.electric_panel.getDefaultState());
+	public int stateID = Block.getStateId(TBlocks.epanel_item.getDefaultState());
 
 	public TileEntityEPanel() {
 	}
@@ -171,7 +172,7 @@ public class TileEntityEPanel extends TileEntity implements ITickable, IInventor
 	public void setID(IBlockState defaultState) {
 		this.stateID = Block.getStateId(defaultState);
 		world.checkLight(this.getPos());
-		world.scheduleUpdate(this.getPos(), TBlocks.electric_panel, 1);
+		world.scheduleUpdate(this.getPos(), TBlocks.epanel_item, 1);
 		this.markDirty();
 	}
 }

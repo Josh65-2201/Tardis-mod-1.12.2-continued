@@ -23,7 +23,9 @@ import net.tardis.mod.common.tileentity.consoles.TileEntityTardis02;
 import net.tardis.mod.common.tileentity.consoles.TileEntityTardis03;
 import net.tardis.mod.common.tileentity.consoles.TileEntityTardis04;
 import net.tardis.mod.common.tileentity.consoles.TileEntityTardis05;
+import net.tardis.mod.common.dimensions.TDimensions;
 import net.tardis.mod.util.common.helpers.Helper;
+import net.tardis.mod.util.common.helpers.PlayerHelper;
 
 public class ControlTelepathicCircuts extends EntityControl {
 	
@@ -53,33 +55,36 @@ public class ControlTelepathicCircuts extends EntityControl {
 	
 	@Override
 	public void preformAction(EntityPlayer player) {
-		if(!world.isRemote && player.isSneaking()) {
+		if (!world.isRemote && player.isSneaking()) {
 			TileEntity te = world.getTileEntity(this.getConsolePos());
 			if(te instanceof TileEntityTardis) {
-				TileEntityTardis tardis = ((TileEntityTardis)te);
-				WorldServer ws = ((WorldServer)world).getMinecraftServer().getWorld(tardis.dimension);
-				BlockPos pos = tardis.getLocation();
-				EntityTardis tardisEntity = new EntityTardis(ws);
-				tardisEntity.setConsole(tardis.getPos());
-				tardisEntity.setPosition(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
-				tardisEntity.setBlockState(tardis.getTopBlock().getBlock().getDefaultState());
-				TileEntity door = ws.getTileEntity(tardis.getLocation().up());
-				tardisEntity.setTag(door.serializeNBT());
-				ws.setBlockState(tardis.getLocation(), Blocks.AIR.getDefaultState());
-				ws.setBlockState(tardis.getLocation().up(), Blocks.AIR.getDefaultState());
-				ws.spawnEntity(tardisEntity);
-				tardis.setTardisEntity(tardisEntity);
-				((WorldServer)world).addScheduledTask(new Runnable() {
-					@Override
-					public void run() {
-						player.setSneaking(false);
-						tardis.transferPlayer(player, false);
-						player.startRiding(tardisEntity);
-					}
-				});
+				try {
+					TileEntityTardis tardis = ((TileEntityTardis)te);
+					WorldServer ws = ((WorldServer)world).getMinecraftServer().getWorld(tardis.dimension);
+					BlockPos pos = tardis.getLocation();
+					EntityTardis tardisEntity = new EntityTardis(ws);
+					tardisEntity.setConsole(tardis.getPos());
+					tardisEntity.setPosition(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
+					tardisEntity.setBlockState(tardis.getTopBlock().getBlock().getDefaultState());
+					TileEntity door = ws.getTileEntity(tardis.getLocation().up());
+					tardisEntity.setTag(door.serializeNBT());
+					ws.setBlockState(tardis.getLocation(), Blocks.AIR.getDefaultState());
+					ws.setBlockState(tardis.getLocation().up(), Blocks.AIR.getDefaultState());
+					ws.spawnEntity(tardisEntity);
+					tardis.setTardisEntity(tardisEntity);
+					((WorldServer)world).addScheduledTask(new Runnable() {
+						@Override
+						public void run() {
+							player.setSneaking(false);
+							tardis.transferPlayer(player, false);
+							player.startRiding(tardisEntity);
+						}
+					});
+				} catch (Exception e) {
+					PlayerHelper.sendMessage(player, "TARDIS shell not found. Try to reland.", true);
+				}
 			}
-		}
-		else if (world.isRemote && !player.isSneaking()) {
+		} else if (world.isRemote && !player.isSneaking()) {
 			openGui();
 		}
 	}

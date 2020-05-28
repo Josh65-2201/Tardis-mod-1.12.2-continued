@@ -30,7 +30,7 @@ public class RenderHellbentMonitor extends TileEntitySpecialRenderer<TileEntityH
 	@Override
 	public void render(TileEntityHellbentMonitor te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
 		GlStateManager.pushMatrix();
-		GlStateManager.translate(x + 0.5, y + 1.25, z + 0.5);
+		GlStateManager.translate(x + 0.5, y + 1, z + 0.5);
 		GlStateManager.rotate(180, 1, 0, 0);
 		IBlockState state = te.getWorld().getBlockState(te.getPos());
 		if (state.getBlock() instanceof BlockFacingDecoration) {
@@ -75,7 +75,7 @@ public class RenderHellbentMonitor extends TileEntitySpecialRenderer<TileEntityH
 		mc.fontRenderer.drawString("Target Dim: " + targetDimName, 0, mc.fontRenderer.FONT_HEIGHT * 3, Color.WHITE.getRGB());
 		mc.fontRenderer.drawString("Artron Banks: " + tardis.getArtron() + " units", 0, mc.fontRenderer.FONT_HEIGHT * 4, Color.white.getRGB());
 		if (tardis.isInFlight())
-			mc.fontRenderer.drawString("Time Left " + tardis.getTimeLeft() / 20, 0, mc.fontRenderer.FONT_HEIGHT * 5, Color.WHITE.getRGB());
+			mc.fontRenderer.drawString("Time Left: " + tardis.getTimeLeft() / 20, 0, mc.fontRenderer.FONT_HEIGHT * 5, Color.WHITE.getRGB());
 		else mc.fontRenderer.drawString("TARDIS Landed", 0, mc.fontRenderer.FONT_HEIGHT * 5, Color.WHITE.getRGB());
 		mc.fontRenderer.drawString("TARDIS Facing: " + tardis.facing.getName(), 0, mc.fontRenderer.FONT_HEIGHT * 6, Color.WHITE.getRGB());
 	}

@@ -24,6 +24,7 @@ public class ControlLaunch extends EntityControl {
 		this.setSize(0.125F, 0.125F);
 	}
 	
+	//Button hitboxes
 	@Override
 	public Vec3d getOffset(TileEntityTardis tardis) {
 		if (tardis.getClass() == TileEntityTardis01.class || tardis.getClass() == TileEntityTardis02.class) {

@@ -79,7 +79,6 @@ import net.tardis.mod.client.renderers.items.RenderItemTardis;
 import net.tardis.mod.client.renderers.items.RenderItemTardis02;
 import net.tardis.mod.client.renderers.items.RenderTEISRItem;
 import net.tardis.mod.client.renderers.tiles.RenderAlembic;
-import net.tardis.mod.client.renderers.tiles.RenderCorridor;
 import net.tardis.mod.client.renderers.tiles.RenderElectricPanel;
 import net.tardis.mod.client.renderers.tiles.RenderTileDoor;
 import net.tardis.mod.client.renderers.tiles.RenderTractorBeam;
@@ -88,7 +87,6 @@ import net.tardis.mod.common.blocks.TBlocks;
 import net.tardis.mod.common.entities.EntityChair;
 import net.tardis.mod.common.entities.EntityCompanion;
 import net.tardis.mod.common.entities.EntityCompanion.EnumCompanionType;
-import net.tardis.mod.common.entities.EntityCorridor;
 import net.tardis.mod.common.entities.EntityCybermanInvasion;
 import net.tardis.mod.common.entities.EntityDalek;
 import net.tardis.mod.common.entities.EntityDalekSkaro;
@@ -220,7 +218,6 @@ public class ClientProxy extends ServerProxy {
 		}
 
 		RenderingRegistry.registerEntityRenderingHandler(ControlDoor.class, RenderDoor::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityCorridor.class, RenderCorridor::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBessie.class, RenderBessie::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityDalekSkaro.class, RenderDalekScaro::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityChair.class, RenderInvis::new);

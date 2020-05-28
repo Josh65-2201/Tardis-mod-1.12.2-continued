@@ -1,0 +1,33 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "It's even bigger on the inside",
+            "color": "white",
+            "bold": false
+        },
+        "description": {
+            "text": "You made a room",
+            "color": "white",
+            "bold": false
+        },
+        "icon": {
+            "item": "tardis:epanel_room"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "Create Room": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "Create Room"
+        ]
+    ],
+    "parent": "tardis:get_sonic"
+}

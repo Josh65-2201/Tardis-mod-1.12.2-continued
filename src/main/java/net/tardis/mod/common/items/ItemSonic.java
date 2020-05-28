@@ -67,19 +67,6 @@ public class ItemSonic extends Item {
 		getStackTag(stack).setInteger(NBT.OPEN, amount);
 	}
 	
-	
-	public static int getCharge(ItemStack stack) {
-		return 100;
-		/*if (stack.hasTagCompound() && stack.getTagCompound().hasKey(NBT.CHARGE_KEY))
-			return getStackTag(stack).getInteger(NBT.CHARGE_KEY);
-		setCharge(stack, 0);
-		return getStackTag(stack).getInteger(NBT.CHARGE_KEY);*/
-	}
-	
-	public static void setCharge(ItemStack stack, int charge) {
-		getStackTag(stack).setInteger(NBT.CHARGE_KEY, MathHelper.clamp(charge, 0, 100));
-	}
-	
 	// NBT Start
 	private static void setMode(ItemStack stack, int i) {
 		NBTTagCompound tag = getStackTag(stack);
@@ -115,7 +102,6 @@ public class ItemSonic extends Item {
 	@Override
 	public void onCreated(ItemStack stack, World worldIn, EntityPlayer playerIn) {
 		super.onCreated(stack, worldIn, playerIn);
-		setCharge(stack, 100);
 		setOpen(stack, 0);
 	}
 	
@@ -144,13 +130,10 @@ public class ItemSonic extends Item {
 			}
 		}
 		
-		if (getCharge(held) >= sc.energyRequired()) {
-			EnumActionResult result = sc.performAction(worldIn, player, handIn);
-			if (sc.causesCoolDown() && result.equals(EnumActionResult.SUCCESS) && !player.isSneaking()) {
-				cooldown(held.getItem(), player, sc.getCoolDownAmount());
-				worldIn.playSound(null, player.getPosition(), sonicSound, SoundCategory.PLAYERS, 0.25F, 1F);
-				setCharge(held, getCharge(held) - sc.energyRequired());
-			}
+		EnumActionResult result = sc.performAction(worldIn, player, handIn);
+		if (sc.causesCoolDown() && result.equals(EnumActionResult.SUCCESS) && !player.isSneaking()) {
+			cooldown(held.getItem(), player, sc.getCoolDownAmount());
+			worldIn.playSound(null, player.getPosition(), sonicSound, SoundCategory.PLAYERS, 0.25F, 1F);
 		}
 		return super.onItemRightClick(worldIn, player, handIn);
 	}
@@ -161,17 +144,13 @@ public class ItemSonic extends Item {
 		ItemStack held = player.getHeldItem(hand);
 		EnumActionResult result = EnumActionResult.FAIL;
 		setOpen(held, 1);
-		getStackTag(held).setInteger("charge", getCharge(held));
 		
 		if (getMode(held) >= 0) {
 			IScrew sc = ScrewdriverHandler.MODES.get(getMode(held));
-			if (getCharge(held) >= sc.energyRequired()) {
-				result = sc.blockInteraction(worldIn, pos, worldIn.getBlockState(pos), player);
-				if (sc.causesCoolDown() && EnumActionResult.SUCCESS.equals(result) && !player.isSneaking()) {
-					cooldown(held.getItem(), player, sc.getCoolDownAmount());
-					worldIn.playSound(null, player.getPosition(), sonicSound, SoundCategory.PLAYERS, 0.5F, 1F);
-					setCharge(held, getCharge(held) - sc.energyRequired());
-				}
+			result = sc.blockInteraction(worldIn, pos, worldIn.getBlockState(pos), player);
+			if (sc.causesCoolDown() && EnumActionResult.SUCCESS.equals(result) && !player.isSneaking()) {
+				cooldown(held.getItem(), player, sc.getCoolDownAmount());
+				worldIn.playSound(null, player.getPosition(), sonicSound, SoundCategory.PLAYERS, 0.5F, 1F);
 			}
 		}
 		
@@ -188,13 +167,10 @@ public class ItemSonic extends Item {
 			
 			IScrew sc = ScrewdriverHandler.MODES.get(getMode(held));
 			
-			if (getCharge(held) >= sc.energyRequired()) {
-				flag = sc.entityInteraction(stack, player, target, hand);
-				if (sc.causesCoolDown() && flag && !player.isSneaking()) {
-					cooldown(stack.getItem(), player, sc.getCoolDownAmount());
-					player.world.playSound(null, player.getPosition(), sonicSound, SoundCategory.PLAYERS, 0.5F, 1F);
-					setCharge(held, getCharge(held) - sc.energyRequired());
-				}
+			flag = sc.entityInteraction(stack, player, target, hand);
+			if (sc.causesCoolDown() && flag && !player.isSneaking()) {
+				cooldown(stack.getItem(), player, sc.getCoolDownAmount());
+				player.world.playSound(null, player.getPosition(), sonicSound, SoundCategory.PLAYERS, 0.5F, 1F);
 			}
 		}
 		return flag;
@@ -203,14 +179,7 @@ public class ItemSonic extends Item {
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		IScrew currentMode = ScrewdriverHandler.MODES.get(getMode(stack));
-		tooltip.add("Charge: " + getCharge(stack));
 		tooltip.add("Mode: " + new TextComponentTranslation(currentMode.getName()).getFormattedText());
-		
-		if (GuiInventory.isShiftKeyDown()) {
-			//	tooltip.add(new TextComponentTranslation(currentMode.getInfo()).getUnformattedText().replace("\n", System.getProperty("line.separator")));
-		} else {
-			//	tooltip.add(new TextComponentTranslation("iteminfo.shift", Minecraft.getMinecraft().gameSettings.keyBindSneak.getDisplayName()).getUnformattedText());
-		}
 		
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
@@ -236,7 +205,6 @@ public class ItemSonic extends Item {
 	
 	public static final class NBT {
 		public static final String MODE_KEY = "mode";
-		public static final String CHARGE_KEY = "charge";
 		public static final String CONSOLE_POS = "console_pos";
 		public static final String SPECIAL = "special";
 		public static final String OPEN = "open";

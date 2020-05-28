@@ -15,6 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.tardis.mod.common.tileentity.TileEntityTardisCoral;
+import net.tardis.mod.common.dimensions.TDimensions;
 
 import javax.annotation.Nullable;
 
@@ -34,11 +35,13 @@ public class BlockTardisCoral extends BlockTileBase {
 	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		if (!worldIn.isRemote && placer instanceof EntityPlayer) {
-			TileEntityTardisCoral coral = (TileEntityTardisCoral) worldIn.getTileEntity(pos);
-			coral.setOwner(((EntityPlayer) placer).getGameProfile().getId());
-		}
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		//if (event.player.world.provider.getDimension() != TDimensions.TARDIS_ID) {
+			if (!worldIn.isRemote && placer instanceof EntityPlayer) {
+				TileEntityTardisCoral coral = (TileEntityTardisCoral) worldIn.getTileEntity(pos);
+				coral.setOwner(((EntityPlayer) placer).getGameProfile().getId());
+			}
+			super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		//}
 	}
 	
 	@Override

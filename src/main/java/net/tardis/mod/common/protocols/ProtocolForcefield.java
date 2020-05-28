@@ -24,7 +24,7 @@ public class ProtocolForcefield implements ITardisProtocol {
 					boolean activated = ((TileEntityDoor)te).getForcefield();
 					tardis.setForceFieldEnabled(activated);
 					for(EntityPlayer player : world.getEntitiesWithinAABB(EntityPlayer.class, Block.FULL_BLOCK_AABB.expand(16, 16, 16).offset(tardis.getPos()))) {
-						PlayerHelper.sendMessage(player, activated ? "Forcefield Activated!" : "Forcefield Deactivated!", true);
+						PlayerHelper.sendMessage(player, "protocol.tardis.forcefield." + ((TileEntityDoor)te).getForcefield() , true);
 					}
 				}
 			}
