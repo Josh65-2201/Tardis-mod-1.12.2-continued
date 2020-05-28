@@ -62,11 +62,11 @@ public class FileHelper {
 				writer.value("tardis:hellbent_silverwall");
 				writer.value("tardis:hellbent_vents");
 				writer.value("tardis:hellbent_wall");
-				writer.value("minecraft:air");
-				writer.value("minecraft:air");
-				writer.value("minecraft:air");
-				writer.value("minecraft:air");
-				writer.value("minecraft:air");
+				writer.value("tardis:hellbent_light");
+				writer.value("tardis:hellbent_monitor");
+				writer.value("tardis:hellbent_pole");
+				writer.value("tardis:hellbent_roof");
+				writer.value("tardis:food_machine");
 				writer.value("minecraft:air");
 				writer.value("minecraft:air");
 
@@ -121,13 +121,8 @@ public class FileHelper {
 				writer.value("tardis:toyota_spin");
 				writer.value("minecraft:air");
 
-				writer.value("tardis:hellbent_light");
-				writer.value("tardis:hellbent_monitor");
-				writer.value("tardis:hellbent_pole");
-				writer.value("tardis:hellbent_roof");
 				writer.value("tardis:am_sphere");
 				writer.value("tardis:electric_panel");
-				writer.value("tardis:food_machine");
 				writer.value("tardis:br_chair");
 				writer.endArray();
 				writer.close();
