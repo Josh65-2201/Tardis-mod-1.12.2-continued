@@ -1,0 +1,29 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "you redecorated"
+        },
+        "description": {
+            "text": "You changed your interior"
+        },
+        "icon": {
+            "item": "tardis:tree_egg"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "change interior": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "change interior"
+        ]
+    ],
+    "parent": "tardis:enter_tardis"
+}

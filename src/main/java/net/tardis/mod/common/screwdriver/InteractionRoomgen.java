@@ -57,7 +57,6 @@ public class InteractionRoomgen implements IScrew {
 	public boolean entityInteraction(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		return false;
 	}
-
 	private void markUpdate(World world, BlockPos pos, IBlockState state) {
 		world.setBlockState(pos, state, 10);
 		world.markBlockRangeForRenderUpdate(pos, pos);
