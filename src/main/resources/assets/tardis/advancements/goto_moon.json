@@ -1,0 +1,32 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Judoon upon the moon"
+        },
+        "description": {
+            "text": "You landed on the moon"
+        },
+        "icon": {
+            "item": "tardis:moon_dirt"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "goto moon": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "dimension": "moon"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "goto moon"
+        ]
+    ],
+    "parent": "tardis:enter_tardis"
+}

@@ -1,5 +1,6 @@
 package net.tardis.mod.common.entities;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -40,7 +41,7 @@ public class EntityTardis extends Entity{
 	private NBTTagCompound doorTag;
 	private IBlockState state;
 	
-	public EntityTardis(World worldIn) {
+	public EntityTardis(final World worldIn) {
 		super(worldIn);
 		state = TBlocks.tardis_top_tt.getDefaultState();
 	}
@@ -52,14 +53,14 @@ public class EntityTardis extends Entity{
 	}
 
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound compound) {
+	protected void readEntityFromNBT(final NBTTagCompound compound) {
 		this.consolePos = BlockPos.fromLong(compound.getLong("console"));
 		this.doorTag = compound.getCompoundTag("door_tag");
 		this.state = Block.getStateById(compound.getInteger("exterior_state"));
 	}
 
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound compound) {
+	protected void writeEntityToNBT(final NBTTagCompound compound) {
 		compound.setLong("console", this.consolePos.toLong());
 		if(doorTag!= null && !doorTag.isEmpty())
 			compound.setTag("door_tag", doorTag);
@@ -74,29 +75,30 @@ public class EntityTardis extends Entity{
 	
 		//Allows this to be driven
 		if(this.getPassengers().size() > 0) {
-			Entity entity = this.getPassengers().get(0);
+			final Entity entity = this.getPassengers().get(0);
 			if(entity instanceof EntityLivingBase)
 				this.handleRider((EntityLivingBase)entity);
 		}
 		
 		this.setNoGravity(!this.getPassengers().isEmpty());
-		
+
 		//Rotate the entity
 		if(this.hasNoGravity())
 			this.rotationYaw = (rotationYaw + 0.5F) % 360;
-		
+
 		if(!world.isRemote && !BlockPos.ORIGIN.equals(this.consolePos)) {
-			WorldServer tardisDimension = ((WorldServer)world).getMinecraftServer().getWorld(TDimensions.TARDIS_ID);
+			final WorldServer tardisDimension = ((WorldServer)world).getMinecraftServer().getWorld(TDimensions.TARDIS_ID);
 			if(tardisDimension != null) {
-				TileEntity te = tardisDimension.getTileEntity(this.getConsole());
+				final TileEntity te = tardisDimension.getTileEntity(this.getConsole());
 				if(te instanceof TileEntityTardis) {
-					TileEntityTardis tardis = (TileEntityTardis)te;
+					final TileEntityTardis tardis = (TileEntityTardis)te;
 					tardis.setLocation(this.getPosition());
+					tardis.setDesination(this.getPosition(), tardis.destDim);
 					if(tardis.getTardisEntity() != this)
 						tardis.setTardisEntity(this);
 					
 					//Update door constantly
-					ControlDoor intDoor = tardis.getDoor();
+					final ControlDoor intDoor = tardis.getDoor();
 					if(intDoor != null){
 						if(this.ticksExisted % 20 == 0) {
 							intDoor.getDataManager().set(ControlDoor.FACING, this.rotationYaw);
@@ -106,11 +108,11 @@ public class EntityTardis extends Entity{
 					}
 					
 					//Replace exterior
-					if(this.onGround) {
+					if(this.onGround || this.getPassengers().isEmpty()) {
 						++this.ticksOnGround;
-						if(this.ticksOnGround > 60) {
-							this.createDoorTile();
+						if(this.ticksOnGround > 20) {
 							this.setDead();
+							tardis.startFlight();
 						}
 					}
 				}
@@ -137,32 +139,45 @@ public class EntityTardis extends Entity{
 	
 	public void move() {
 		if(!this.onGround && !this.hasNoGravity())
-			motionY -= 0.5D;
-		this.move(MoverType.SELF, motionX, motionY, motionZ);
+			motionY -= 1D;
+		this.move(MoverType.SELF, (motionX * speed() + 0.05), (motionY * 5), (motionZ * speed()));
 		motionX = motionZ = motionY = 0;
 		this.prevPosX = posX;
 		this.prevPosY = posY;
 		this.prevPosZ = posZ;
 	}
-	
-	public void handleRider(EntityLivingBase base) {
-		Vec3d look = base.getLookVec().scale(0.3D);
+
+	public void handleRider(final EntityLivingBase base) {
+		final Vec3d look = base.getLookVec().scale(0.3D);
+
+		if(world.isRemote) {
+			//Auto camera change
+			Minecraft.getMinecraft().gameSettings.thirdPersonView = 1;
+			Minecraft.getMinecraft().gameSettings.fovSetting = 110F;
 		
+			TileEntityTardis tardis = new TileEntityTardis();
+			tardis.setRWF(true);
+		}
+
 		if(base.moveForward > 0) {
+			this.rotationYaw = (rotationYaw + 30F) % 360;
 			motionX = look.x;
 			motionZ = look.z;
 		}
 		else if(base.moveForward < 0) {
+			this.rotationYaw = (rotationYaw + 30F) % 360;
 			motionX = -look.x;
 			motionZ = -look.z;
 		}
 		if(base.moveStrafing > 0) {
-			Vec3d move = look.rotateYaw(-80);
+			this.rotationYaw = (rotationYaw + 30F) % 360;
+			final Vec3d move = look.rotateYaw(-80);
 			motionX = move.x;
 			motionZ = move.z;
 		}
 		else if(base.moveStrafing < 0) {
-			Vec3d move = look.rotateYaw(80);
+			this.rotationYaw = (rotationYaw + 30F) % 360;
+			final Vec3d move = look.rotateYaw(80);
 			motionX = move.x;
 			motionZ = move.z;
 		}
@@ -172,7 +187,11 @@ public class EntityTardis extends Entity{
 		
 	}
 
-	public void setConsole(BlockPos console) {
+	public int speed() {
+		return 10;
+	}
+
+	public void setConsole(final BlockPos console) {
 		this.consolePos = console;
 	}
 	
@@ -192,10 +211,10 @@ public class EntityTardis extends Entity{
 
 	@Override
 	public boolean canBePushed() {
-		return true;
+		return false;
 	}
 	
-	public void setOpenState(EnumFlightState state) {
+	public void setOpenState(final EnumFlightState state) {
 		this.dataManager.set(OPEN_STATE, state.ordinal());
 	}
 	
@@ -209,26 +228,29 @@ public class EntityTardis extends Entity{
 	}
 
 	@Override
-	public void updatePassenger(Entity passenger) {
+	public void updatePassenger(final Entity passenger) {
 		super.updatePassenger(passenger);
-		double angle = Math.toRadians(-this.rotationYaw);
-		double offsetX = Math.sin(angle) * 0.5, offsetZ = Math.cos(angle) * 0.5;
+
+		final double angle = Math.toRadians(-this.rotationYaw);
+		//Player position in RWF
+		final double offsetX = Math.sin(angle) / 100, offsetZ = Math.cos(angle) / 100;
 		passenger.setPosition(posX + offsetX, posY + this.getMountedYOffset() + passenger.getYOffset(), posZ + offsetZ);
 		passenger.fallDistance = 0;
 	}
 
 	@Override
-	protected void removePassenger(Entity pass) {
+	protected void removePassenger(final Entity pass) {
 		super.removePassenger(pass);
 		if(!world.isRemote) {
 			if(this.getOpenState() == EnumFlightState.CLOSED) {
 				((WorldServer)world).addScheduledTask(new Runnable() {
 					@Override
 					public void run() {
-						WorldServer tardisWorld = ((WorldServer)world).getMinecraftServer().getWorld(TDimensions.TARDIS_ID);
+						final WorldServer tardisWorld = ((WorldServer)world).getMinecraftServer().getWorld(TDimensions.TARDIS_ID);
 						if(tardisWorld != null) {
-							BlockPos pos = getConsole().south();
-							pass.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+							final BlockPos pos = getConsole().south();
+							//TP back in to tardis after RWF
+							pass.setPosition(pos.getX() + 1.5, pos.getY(), pos.getZ() + 1.5);
 							if(pass instanceof EntityPlayerMP)
 								world.getMinecraftServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP)pass, TDimensions.TARDIS_ID, new TardisTeleporter());
 						}
@@ -236,9 +258,17 @@ public class EntityTardis extends Entity{
 				});
 			}
 			else {
-				double x = Math.sin(Math.toRadians(this.rotationYaw)), z = Math.cos(Math.toRadians(this.rotationYaw));
+				final double z = Math.cos(Math.toRadians(this.rotationYaw));
 				pass.setPosition(this.posX + z, this.posY, this.posZ + z);
 			}
+		}
+		if(world.isRemote) {
+			//Auto camera change
+			Minecraft.getMinecraft().gameSettings.thirdPersonView = 0;
+			Minecraft.getMinecraft().gameSettings.fovSetting = 70F;
+		
+			TileEntityTardis tardis = new TileEntityTardis();
+			tardis.setRWF(false);
 		}
 	}
 	
@@ -246,30 +276,12 @@ public class EntityTardis extends Entity{
 		return this.state;
 	}
 	
-	public void setBlockState(IBlockState state) {
+	public void setBlockState(final IBlockState state) {
 		this.state = state;
 		this.dataManager.set(EXTERIOR, Block.getStateId(state));
 	}
 	
-	public TileEntityDoor createDoorTile() {
-		
-		if(state == null || !(state.getBlock() instanceof BlockTardis)) {
-			this.setDead();
-			return null;
-		}
-		
-		world.setBlockState(this.getPosition().up(), this.getBlockState().withProperty(BlockTardisTop.FACING, this.getHorizontalFacing()));
-		world.setBlockState(this.getPosition(), TBlocks.tardis.getDefaultState());
-		TileEntity te = world.getTileEntity(this.getPosition().up());
-		if(te instanceof TileEntityDoor && this.doorTag != null && !this.doorTag.isEmpty()) {
-			((TileEntityDoor)te).deserializeNBT(doorTag);
-			te.setPos(this.getPosition().up());
-		}
-		return (TileEntityDoor) te;
-	}
-	
-	public void setTag(NBTTagCompound tag) {
+	public void setTag(final NBTTagCompound tag) {
 		this.doorTag = tag;
 	}
-	
 }

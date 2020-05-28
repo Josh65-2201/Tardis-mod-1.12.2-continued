@@ -54,6 +54,11 @@ public class BlockMonitor extends BlockFacingDecoration implements IRenderBox {
 	}
 
 	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return 2;
+	}
+	
+	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		drops.clear();
 		drops.add(new ItemStack(this));

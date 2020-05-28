@@ -22,14 +22,22 @@ import net.tardis.mod.common.blocks.interfaces.IARSBlock;
 import net.tardis.mod.common.blocks.interfaces.INeedItem;
 
 public class BlockToyota extends BlockBase implements INeedItem, IARSBlock {
+    private final boolean light;
 
 	public ItemBlock item = new ItemBlockToyota(this);
 
 	public BlockToyota(boolean light) {
 		item.setCreativeTab(TardisTabs.BLOCKS);
-		if (light) {
-			this.setLightLevel(1);
-		}
+		this.light = light;
+	}
+
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+        if(light) {
+            return 5;
+        }else {
+            return 0;
+        }
 	}
 
 	@Override

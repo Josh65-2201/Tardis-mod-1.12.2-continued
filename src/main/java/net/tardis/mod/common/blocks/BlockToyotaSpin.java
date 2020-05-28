@@ -24,7 +24,6 @@ public class BlockToyotaSpin extends BlockMultiblockMaster {
 	public BlockToyotaSpin(Supplier<TileEntity> supplier) {
 		super(Material.IRON);
 		this.setHardness(5F);
-		this.setLightLevel(1F);
 	}
 
 	@Override
@@ -35,6 +34,11 @@ public class BlockToyotaSpin extends BlockMultiblockMaster {
 	@Override
 	public ItemBlock getItem() {
 		return item;
+	}
+
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return 5;
 	}
 
 	@Override

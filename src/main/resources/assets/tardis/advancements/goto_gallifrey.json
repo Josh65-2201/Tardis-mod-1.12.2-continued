@@ -1,0 +1,34 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Home?",
+            "color": "white"
+        },
+        "description": {
+            "text": "Land on Gallifrey",
+            "color": "white"
+        },
+        "icon": {
+            "item": "tardis:gallifreyan_sand"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "goto Gallifrey": {
+            "trigger": "minecraft:location",
+            "conditions": {
+                "dimension": "gallifrey"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "goto Gallifrey"
+        ]
+    ],
+    "parent": "tardis:enter_tardis"
+}

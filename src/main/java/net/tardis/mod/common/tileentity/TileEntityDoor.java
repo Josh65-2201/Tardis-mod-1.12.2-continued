@@ -12,6 +12,7 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.IInventory;
@@ -195,7 +196,14 @@ public class TileEntityDoor extends TileEntity implements ITickable, IInventory,
 			--openingTicks;
 		if (isRemat) {
 			if (alpha < 1.0F) {
+				if (alpha <= 0.0F) {
+					TileEntityTardis e = new TileEntityTardis();
+					world.playSound(null, this.getPos(), TSounds.land, SoundCategory.AMBIENT, 1F, 1F);
+				}
+
+				//remat animation
 				alpha += 0.005F;
+
 				if (!world.isRemote) {
 					for (Entity e : world.getEntitiesWithinAABB(Entity.class, aabb.offset(this.getPos().down()))) {
 						try {
@@ -212,7 +220,14 @@ public class TileEntityDoor extends TileEntity implements ITickable, IInventory,
 			}
 		}
 		if (isDemat) {
+			if (alpha >= 1.0F) {
+				TileEntityTardis e = new TileEntityTardis();
+				world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.AMBIENT, 1F, 1F);
+			}
+
+			//demat animation
 			alpha -= 0.005F;
+
 			if (alpha <= 0) {
 				this.isDemat = false;
 				this.world.setBlockState(this.getPos(), Blocks.AIR.getDefaultState());
@@ -320,7 +335,7 @@ public class TileEntityDoor extends TileEntity implements ITickable, IInventory,
 	public void handleForceField() {
 		world.getEntitiesWithinAABB(Entity.class, RENDER_BB.offset(this.getPos())).forEach(entity -> {
 			
-			if (entity instanceof IProjectile) {
+			if (entity instanceof IProjectile || entity instanceof EntityThrowable) {
 				entity.setDead();
 				if(!this.hitEntitiesIDs.contains(entity.getEntityId())) {
 					this.hitEntitiesIDs.add(entity.getEntityId());
@@ -352,7 +367,6 @@ public class TileEntityDoor extends TileEntity implements ITickable, IInventory,
 				TileEntity te = ws.getTileEntity(this.getConsolePos());
 				if(te instanceof TileEntityTardis) {
 					TileEntityTardis tardis = ((TileEntityTardis)te);
-					//TODO: Balence Fuel use
 					tardis.setArtron(tardis.getArtron() - 1F);
 					
 					if(tardis.getArtron() <= 0)
