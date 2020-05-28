@@ -94,9 +94,9 @@ public class GuiConsoleChange extends GuiScreen {
 		super.initGui();
 		this.buttonList.clear();
 		int gw = width / 2 - 110, gh = height / 2 + 45;
-		this.addButton(NEXT = this.createButton(0, gw, gh, "> Next Console"));
-		this.addButton(SUBMIT = this.createButton(1, gw, gh, "> Select Console"));
-		this.addButton(PREV = this.createButton(2, gw, gh, "> Previous Console"));
+		this.addButton(NEXT = this.createButton(2, gw, gh, "> Next Console"));
+		this.addButton(PREV = this.createButton(1, gw, gh, "> Previous Console"));
+		this.addButton(SUBMIT = this.createButton(0, gw, gh, "> Select Console"));
 	}
 	
 	public ButtonMonitor createButton(int id, int x, int y, String name) {

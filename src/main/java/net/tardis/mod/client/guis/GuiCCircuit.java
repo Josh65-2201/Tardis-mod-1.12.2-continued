@@ -82,19 +82,19 @@ public class GuiCCircuit extends GuiScreen{
 		super.initGui();
 		int bWidth = width / 2 - 105;
 		int bHeight = height / 2 + 50;
-		this.addButton(new ButtonMonitor(0, bWidth, bHeight - (Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT * 0), "> Next Disguise")).addAction(()->{
+		this.addButton(new ButtonMonitor(0, bWidth, bHeight - (Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT * 2), "> Next Exterior")).addAction(()->{
 			if(index + 1 > exteriors.length - 1)
 				index = 0;
 			++index;
 		});
-		this.addButton(new ButtonMonitor(1, bWidth, bHeight - (Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT * 1), "> Select Exterior")).addAction(()->{
-			NetworkHandler.NETWORK.sendToServer(new MessageExteriorChange(tardis.getPos(), exteriors[index].block.getDefaultState()));
-			Minecraft.getMinecraft().displayGuiScreen(null);
-		});
-		this.addButton(new ButtonMonitor(2, bWidth, bHeight - (Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT * 2), "> Prev Disguise")).addAction(()->{
+		this.addButton(new ButtonMonitor(2, bWidth, bHeight - (Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT * 1), "> Prev Exterior")).addAction(()->{
 			if(index - 1 < 0)
 				index = exteriors.length - 1;
 			else --index;
+		});
+		this.addButton(new ButtonMonitor(1, bWidth, bHeight - (Minecraft.getMinecraft().fontRenderer.FONT_HEIGHT * 0), "> Select Exterior")).addAction(()->{
+			NetworkHandler.NETWORK.sendToServer(new MessageExteriorChange(tardis.getPos(), exteriors[index].block.getDefaultState()));
+			Minecraft.getMinecraft().displayGuiScreen(null);
 		});
 	}
 

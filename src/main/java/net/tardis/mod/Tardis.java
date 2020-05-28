@@ -77,6 +77,7 @@ import net.tardis.mod.common.protocols.ProtocolStealth;
 import net.tardis.mod.common.protocols.ProtocolSystemReadout;
 import net.tardis.mod.common.protocols.ProtocolToggleHum;
 import net.tardis.mod.common.protocols.ProtocolWaypoints;
+import net.tardis.mod.common.protocols.ProtocolSecurity;
 import net.tardis.mod.common.protocols.TardisProtocol;
 import net.tardis.mod.common.recipes.RepairRecipes;
 import net.tardis.mod.common.screwdriver.ScrewdriverHandler;
@@ -241,17 +242,16 @@ public class Tardis {
 		ScrewdriverHandler.init();
 		ForgeChunkManager.setForcedChunkLoadingCallback(instance, new TardisLoadingCallback());
 
-		TardisProtocol.register(new ProtocolEmerEscape());
-		TardisProtocol.register(new ProtocolCCircuit());
+		//TardisProtocol.register(new ProtocolEmerEscape());
+		TardisProtocol.register(new ProtocolSecurity());
 		TardisProtocol.register(new ProtocolSystemReadout());
-		TardisProtocol.register(new ProtocolConsole());
-		if (Loader.isModLoaded(TStrings.ModIds.DIM_DOORS))
-			TardisProtocol.register(new ProtocolFindDimDRfit());
 		TardisProtocol.register(new ProtocolWaypoints());
 		TardisProtocol.register(new ProtocolToggleHum());
 		TardisProtocol.register(new ProtocolChangeInterior());
-		TardisProtocol.register(new ProtocolStealth());
-		TardisProtocol.register(new ProtocolForcefield());
+		TardisProtocol.register(new ProtocolCCircuit());
+		TardisProtocol.register(new ProtocolConsole());
+		//TardisProtocol.register(new ProtocolStealth());
+		//TardisProtocol.register(new ProtocolForcefield());
 
 		// Register All Mobs Here.
 		EntityHelper.registerMobEgg(EntityCybermanInvasion.class, "invasion_cyberman", TardisConfig.USE_ENTITIES.cybermanSpawnChance, 5, 4);

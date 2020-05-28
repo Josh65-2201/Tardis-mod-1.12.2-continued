@@ -17,7 +17,7 @@ import net.tardis.mod.network.packets.MessageSwitchHum;
 public class GuiToggleHum extends GuiScreen {
 
 	private BlockPos pos;
-	private int dimID; // Useless right ?
+	private int dimID;
 	
 	public static ResourceLocation TEXTURE = new ResourceLocation(Tardis.MODID, "textures/gui/monitor.png");
 	

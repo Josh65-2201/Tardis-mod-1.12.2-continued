@@ -54,7 +54,9 @@ public class GuiWaypoints extends GuiScreen {
 
 	@Override
 	public void initGui() {
-		this.addButton(delete = addButton(4, "Delete current Waypoint"));
+		this.addButton(delete = addButton(4, "Delete current Waypoint")).addAction(() -> {
+			Minecraft.getMinecraft().displayGuiScreen(null);
+		});
 		this.addButton(save = addButton(2, "Save a new Waypoint"));
 		this.addButton(load = addButton(0, "Load current Waypoint"));
 	}
