@@ -1,5 +1,6 @@
 package net.tardis.mod.common.screwdriver;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockDoor;
@@ -37,7 +38,11 @@ public class InteractionImhelping implements IScrew {
 
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
-		return EnumActionResult.SUCCESS;
+		if (!player.isSneaking()) {
+			Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:sonic_imhelping");
+			return EnumActionResult.SUCCESS;
+		}
+		return EnumActionResult.FAIL;
 	}
 	
 	@Override

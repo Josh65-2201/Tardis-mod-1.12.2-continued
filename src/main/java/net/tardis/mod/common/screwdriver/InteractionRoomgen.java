@@ -1,5 +1,6 @@
 package net.tardis.mod.common.screwdriver;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockDoor;
@@ -19,7 +20,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.tardis.mod.Tardis;
+import net.tardis.mod.common.blocks.TBlocks;
 import net.tardis.mod.util.common.helpers.PlayerHelper;
+import net.tardis.mod.client.guis.GuiRoomgen;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -28,11 +31,11 @@ import static net.minecraft.init.Blocks.REDSTONE_LAMP;
 
 @Mod.EventBusSubscriber(modid = Tardis.MODID)
 public class InteractionRoomgen implements IScrew {
-	
-	private Method dispense = ReflectionHelper.findMethod(BlockDispenser.class, "dispense", "func_176439_d", World.class, BlockPos.class);
-	
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
+		if (!player.isSneaking()) {
+			Minecraft.getMinecraft().displayGuiScreen(new GuiRoomgen());
+		}
 		return EnumActionResult.FAIL;
 	}
 	
@@ -42,7 +45,11 @@ public class InteractionRoomgen implements IScrew {
 		
 		Block block = state.getBlock();
 
-		PlayerHelper.sendMessage(player, "Room Genaration not yet avaliable", true);
+		if (!player.isSneaking() && block == TBlocks.epanel_room) {
+			PlayerHelper.sendMessage(player, "Room Genaration not yet avaliable", true);
+			Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:make_1_room");
+			return EnumActionResult.SUCCESS;
+		}
 		return EnumActionResult.FAIL;
 	}
 	
@@ -50,7 +57,7 @@ public class InteractionRoomgen implements IScrew {
 	public boolean entityInteraction(ItemStack stack, EntityPlayer playerIn, EntityLivingBase target, EnumHand hand) {
 		return false;
 	}
-	
+
 	private void markUpdate(World world, BlockPos pos, IBlockState state) {
 		world.setBlockState(pos, state, 10);
 		world.markBlockRangeForRenderUpdate(pos, pos);
