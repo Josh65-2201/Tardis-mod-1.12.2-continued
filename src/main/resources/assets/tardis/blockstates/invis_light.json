@@ -3,14 +3,14 @@
   "defaults": {
     "model": "cube_all",
     "textures": {
-      "all": "tardis:blocks/panel"
+      "all": "tardis:blocks/invis"
     }
   },
   "variants": {
-    "normal": [
+    "inventory": [
       {}
     ],
-    "inventory": [
+    "normal": [
       {}
     ]
   }
