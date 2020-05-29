@@ -8,27 +8,42 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.IBlockAccess;
-import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.common.tileentity.TileEntityInvislight;
+import net.tardis.mod.common.blocks.interfaces.IRenderBox;
 import net.tardis.mod.common.blocks.BlockTileBase;
+import net.minecraft.util.EnumBlockRenderType;
 
 import java.util.Random;
 
-public class BlockInvislight extends BlockTileBase {
-
+public class BlockInvislight extends BlockTileBase implements IRenderBox {
 	public BlockInvislight() {
 		super(Material.GLASS, TileEntityInvislight::new);		
 	}
 
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, float hitX, float hitY, float hitZ) {
-    //    TileEntityTardis tardis = new TileEntityTardis();
-    //    if (tardis.getArtron() >= 1) {
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return 15;
+	}
 
-    //    } else {
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.INVISIBLE;
+	}
 
-    //    }
-    return true;
-    }
+	@Override
+	public boolean isNormalCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+
+	@Override
+	public boolean shouldRenderBox() {
+		return false;
+	}
 
 	public Class<TileEntityInvislight> getTileEntityClass() {
 		return TileEntityInvislight.class;

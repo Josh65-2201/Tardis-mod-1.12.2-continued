@@ -13,7 +13,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.tardis.mod.common.blocks.TBlocks;
-import net.tardis.mod.common.screwdriver.InteractionEpanel;
 import net.tardis.mod.util.common.helpers.TardisHelper;
 
 import javax.annotation.Nullable;
