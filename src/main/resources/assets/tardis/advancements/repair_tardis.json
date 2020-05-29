@@ -21,14 +21,10 @@
     },
     "criteria": {
         "Repair Tardis": {
-            "trigger": "minecraft:consume_item",
+            "trigger": "minecraft:item_durability_changed",
             "conditions": {
                 "item": {
-                    "item": "tardis:tardis_repairkit",
-                    "count": {
-                        "min": 1,
-                        "max": 1
-                    }
+                    "item": "tardis:tardis_repairkit"
                 }
             }
         }
