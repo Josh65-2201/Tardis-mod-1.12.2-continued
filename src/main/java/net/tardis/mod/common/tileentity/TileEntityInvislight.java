@@ -11,17 +11,17 @@ import net.tardis.mod.common.blocks.TBlocks;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 
 public class TileEntityInvislight extends TileEntity {
+	public int light;
 
-
-	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+    public void update() {
+        System.out.println(light);
         TileEntityTardis tardis = new TileEntityTardis();
-        if(tardis.getArtron() >= 1) {
-            return 10;
-        }else {
-            return 0;
+        if (tardis.getArtron() >= 1F) {
+			light = 15;
+        } else {
+			light = 0;
         }
-	}
-
+    }
 
     public TileEntity createNewTileEntity(World worldIn, int meta) {
         return new TileEntityInvislight();

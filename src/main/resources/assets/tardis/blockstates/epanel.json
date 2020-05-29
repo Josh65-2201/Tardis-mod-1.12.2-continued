@@ -3,7 +3,7 @@
   "defaults": {
     "model": "cube_all",
     "textures": {
-      "all": "tardis:blocks/panel"
+      "all": "tardis:blocks/epanel_item"
     }
   },
   "variants": {
