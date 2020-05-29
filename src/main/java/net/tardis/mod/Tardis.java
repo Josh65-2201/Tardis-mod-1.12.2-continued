@@ -135,7 +135,7 @@ import net.tardis.mod.util.common.helpers.EntityHelper;
 import net.tardis.mod.util.common.helpers.FileHelper;
 
 
-@Mod(modid = Tardis.MODID, name = Tardis.NAME, version = Tardis.VERSION, dependencies = Tardis.DEP, updateJSON = "https://raw.githubusercontent.com/josh-65/Tardis-mod-1.12.2-continued/master/update.json")
+@Mod(modid = Tardis.MODID, name = Tardis.NAME, dependencies = Tardis.DEP, version = "0.1.7", updateJSON = "https://raw.githubusercontent.com/josh-65/Tardis-mod-1.12.2-continued/master/update.json")
 public class Tardis {
 
 	public static final String MODID = "tardis";
