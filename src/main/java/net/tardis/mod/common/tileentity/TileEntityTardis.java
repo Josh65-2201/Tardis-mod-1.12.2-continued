@@ -245,7 +245,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				++frame;
 
 			if(world.getTotalWorldTime() % 40 == 0) {
-				world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.AMBIENT, 0.5F, 1F);
+				world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.AMBIENT, 0.3F, 1F);
 			}
 		}
 
