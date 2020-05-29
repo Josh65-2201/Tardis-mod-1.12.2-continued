@@ -2,35 +2,38 @@
     "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
     "display": {
         "title": {
-            "text": "Deleted"
+            "text": "Exterminated"
         },
         "description": {
-            "text": "You deleted a Cyberman"
+            "text": "You exterminated a Dalek"
         },
         "icon": {
-            "item": "tardis:cyberman_icon"
+            "item": "tardis:ray_gun"
         },
         "frame": "task",
         "show_toast": true,
         "announce_to_chat": true,
-        "hidden": false
+        "hidden": true
     },
     "criteria": {
-        "killed Cybermen": {
+        "Killed a Dalek": {
             "trigger": "minecraft:player_killed_entity",
             "conditions": {
                 "entity": {
-                    "type": "tardis:invasion_cyberman"
+                    "type": "tardis:dalek"
                 }
             }
         }
     },
     "requirements": [
         [
-            "killed Cybermen"
+            "Killed a Dalek"
         ]
     ],
     "rewards": {
+        "recipes": [
+            "tardis:dalek_raygun"
+        ],
         "experience": 10
     },
     "parent": "tardis:root"
