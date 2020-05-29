@@ -79,7 +79,7 @@ public class GuiRoomgen extends GuiScreen{
 			else --index;
 		});
 		this.addButton(this.addButton(0, "> Select Room")).addAction(() -> {
-			NetworkHandler.NETWORK.sendToServer(new MessageChangeRoom(index, tardis.getPos()));
+			//save NBT tag with room/corridor name
 			Minecraft.getMinecraft().displayGuiScreen(null);
 		});
 	}

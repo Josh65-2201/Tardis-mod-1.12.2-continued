@@ -2,11 +2,6 @@ package net.tardis.mod.common.screwdriver;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDispenser;
-import net.minecraft.block.BlockDoor;
-import net.minecraft.block.BlockRedstoneLight;
-import net.minecraft.block.BlockTNT;
-import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -35,10 +30,10 @@ import static net.minecraft.init.Blocks.REDSTONE_LAMP;
 
 @Mod.EventBusSubscriber(modid = Tardis.MODID)
 public class InteractionImhelping implements IScrew {
-
+	
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
-		if (!player.isSneaking()) {
+		if(!player.isSneaking() && !world.isRemote) {
 			Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:sonic_imhelping");
 			return EnumActionResult.SUCCESS;
 		}
