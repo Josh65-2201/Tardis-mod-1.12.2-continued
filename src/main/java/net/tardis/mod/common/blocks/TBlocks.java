@@ -19,6 +19,7 @@ import net.tardis.mod.common.tileentity.TileEntityDoor;
 import net.tardis.mod.common.tileentity.TileEntityHellbentLight;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.common.tileentity.TileEntityTractorBeam;
+import net.tardis.mod.common.tileentity.TileEntityInvislight;
 import net.tardis.mod.common.tileentity.consoles.TileEntityTardis01;
 import net.tardis.mod.common.tileentity.consoles.TileEntityTardis02;
 import net.tardis.mod.common.tileentity.consoles.TileEntityTardis03;
@@ -127,7 +128,8 @@ public class TBlocks {
 	
 	public static Block zero_room_glow = register(new BlockVerticalSlab(), "zero_room_slab");
 	public static Block zero_room = register(new BlockBase(), "zero_room");
-	
+
+	public static Block invis_light = register(new BlockInvislight(), "invis_light");
 	public static Block hellbent_light = register(new BlockFacingDecoration(TileEntityHellbentLight::new).setLightLevel(1F).setLightOpacity(0), "hellbent_light");
 	public static Block hellbent_monitor = register(new BlockMonitor(TileEntityHellbentMonitor::new), "hellbent_monitor");
 	public static Block hellbent_pole = register(new BlockDecoration(TileEntityHellbentPole::new), "hellbent_pole");
