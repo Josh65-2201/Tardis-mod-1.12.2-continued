@@ -2,11 +2,6 @@ package net.tardis.mod.common.screwdriver;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDispenser;
-import net.minecraft.block.BlockDoor;
-import net.minecraft.block.BlockRedstoneLight;
-import net.minecraft.block.BlockTNT;
-import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.tardis.mod.common.blocks.TBlocks;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
@@ -27,10 +23,10 @@ import net.tardis.mod.client.guis.GuiRoomgen;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import static net.minecraft.init.Blocks.REDSTONE_LAMP;
-
 @Mod.EventBusSubscriber(modid = Tardis.MODID)
 public class InteractionRoomgen implements IScrew {
+	private int roomsMade = 0;
+
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
 		if (!player.isSneaking()) {
@@ -47,7 +43,14 @@ public class InteractionRoomgen implements IScrew {
 
 		if (!player.isSneaking() && block == TBlocks.epanel_room) {
 			PlayerHelper.sendMessage(player, "Room Genaration not yet avaliable", true);
-			Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:make_1_room");
+			
+			roomsMade++;
+			if (roomsMade == 1) {
+				Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:make_1_room");
+			}
+			if (roomsMade == 100) {
+				Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:make_100_room");
+			}
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.FAIL;
