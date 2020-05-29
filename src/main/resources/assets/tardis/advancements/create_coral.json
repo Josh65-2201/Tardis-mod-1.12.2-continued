@@ -1,0 +1,33 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Time is yours"
+        },
+        "description": {
+            "text": "You made a TARDIS coral",
+            "color": "white"
+        },
+        "icon": {
+            "item": "tardis:tardis_coral"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "Place Coral": {
+            "trigger": "minecraft:placed_block",
+            "conditions": {
+                "block": "tardis:tardis_coral"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "Place Coral"
+        ]
+    ],
+    "parent": "tardis:root"
+}

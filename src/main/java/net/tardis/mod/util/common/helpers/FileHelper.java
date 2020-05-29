@@ -78,11 +78,6 @@ public class FileHelper {
 				writer.value("tardis:s13blankroundel3");
 				writer.value("tardis:s13floor");
 				writer.value("tardis:s13flooralt");
-				writer.value("minecraft:air");
-				writer.value("minecraft:air");
-				writer.value("minecraft:air");
-				writer.value("minecraft:air");
-				
 				writer.value("tardis:zero_room");
 				writer.value("tardis:zero_room_slab");
 				writer.value("minecraft:air");

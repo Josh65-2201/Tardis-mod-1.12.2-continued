@@ -20,6 +20,7 @@ import net.tardis.mod.common.items.components.ItemComponent;
 import net.tardis.mod.common.items.components.ItemDematCircut;
 import net.tardis.mod.common.items.components.ItemFluidLink;
 import net.tardis.mod.common.items.components.ItemTVG;
+import net.tardis.mod.common.items.ItemCybermanIcon;
 import net.tardis.mod.common.sounds.TSounds;
 
 @Mod.EventBusSubscriber
@@ -89,8 +90,9 @@ public class TItems {
 	public static Item sonic_lipstick = createItem(new ItemSonic(TSounds.sonic_generic), "sonic_lipstick");
 	public static Item sonic_trowel = createItem(new ItemSonic(TSounds.sonic_generic),"sonic_trowel");
 	public static Item sonic_pen = createItem(new ItemSonic(TSounds.sonic_generic), "sonic_pen");
-	
 	public static Item tracker = createItem(new ItemTracker(), "tracker");
+
+	public static Item cyberman_icon = createItem(new ItemCybermanIcon(), "cyberman_icon");
 
 	@SubscribeEvent
 	public static void regItems(RegistryEvent.Register<Item> event) {

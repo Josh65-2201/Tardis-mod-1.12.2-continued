@@ -1,0 +1,29 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "Im helping *BUZZ* *BUZZ*"
+        },
+        "description": {
+            "text": "Sonics are not great at everything"
+        },
+        "icon": {
+            "item": "tardis:sonic_screwdriver"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "sonic lockdown": {
+            "trigger": "minecraft:impossible"
+        }
+    },
+    "requirements": [
+        [
+            "sonic lockdown"
+        ]
+    ],
+    "parent": "tardis:get_sonic"
+}
