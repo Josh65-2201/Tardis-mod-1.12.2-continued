@@ -1,11 +1,9 @@
 {
   "forge_marker": 1,
   "defaults": {
-    "model": "cube_bottom_top",
+    "model": "cube_all",
     "textures": {
-      "side": "tardis:blocks/panel",
-      "top": "tardis:blocks/panel_top",
-      "bottom": "tardis:blocks/panel_top"
+      "all": "tardis:blocks/panel"
     }
   },
   "variants": {
@@ -14,22 +12,6 @@
     ],
     "inventory": [
       {}
-    ],
-    "type=0": [
-      {}
-    ],
-    "type=1": {
-      "model": "cube_bottom_top",
-      "textures": {
-        "side": "tardis:blocks/panel_roomgen"
-      }
-    },
-    "type=2": {
-      "model": "cube_bottom_top",
-      "textures": {
-        "side": "tardis:blocks/panel_roomremove",
-        "top": "tardis:blocks/panel_roomremove"
-      }
-    }
+    ]
   }
 }

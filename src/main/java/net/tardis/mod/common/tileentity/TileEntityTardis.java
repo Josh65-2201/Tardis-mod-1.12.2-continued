@@ -102,7 +102,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public int dimension = 0;
 	public int destDim = 0;
 	public int dimIndex = 0;
-	public boolean RWF = false;
+	private boolean RWF = false;
 	private static IBlockState blockBase = TBlocks.tardis.getDefaultState();
 	private IBlockState blockTop = TBlocks.tardis_top_tt.getDefaultState();
 
@@ -123,7 +123,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public int totalTimeToTravel;
 	public int rotorUpdate = 0;
 	public int frame = 0;
-	private boolean hadsEnabled = false, forceFields = false;
+	private boolean hadsEnabled = true, forceFields = false;
 	public int magnitude = 10;
 	public EnumEvent currentEvent = EnumEvent.NONE;
 	public BaseSystem[] systems;
@@ -169,8 +169,13 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				soundChanged = false;
 			}
 		}
+		//Fuel lower than travel time warn
+		if((this.ticksToTravel > (this.artron * 20) || !this.getCanFly()) && world.getTotalWorldTime() % 400 == 0)
+			world.playSound(null, this.getPos(), TSounds.cloister_bell, SoundCategory.BLOCKS, 2F, 1F);
+
 		if (this.ticksToTravel > 0) {
-			--ticksToTravel;			
+			--ticksToTravel;
+			this.getDoor().setOpen(false);		
 
 			//Fuel lower than travel time warn
 			if((this.ticksToTravel > (this.artron * 20)) && world.getTotalWorldTime() % 400 == 0)
@@ -182,12 +187,12 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			
 			if (this.ticksToTravel == 200) {
 				if(!world.isRemote)
-					world.playSound(null, this.getPos(), TSounds.land, SoundCategory.BLOCKS, 1F, 1F);
+					world.playSound(null, this.getPos(), TSounds.land, SoundCategory.AMBIENT, 1F, 1F);
 			}
 			
 			if (this.ticksToTravel == this.totalTimeToTravel - 1)
 				if(!world.isRemote)
-					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.BLOCKS, 1F, 1F);
+					world.playSound(null, this.getPos(), TSounds.takeoff, SoundCategory.AMBIENT, 1F, 1F);
 
 			//Infinite flight in the Time Vortex
 			if ((this.ticksToTravel < 400) && this.isInFlight() && (this.destDim == TDimensions.TIMEVORTEX_ID)) {
@@ -239,7 +244,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 				++frame;
 
 			if(world.getTotalWorldTime() % 40 == 0) {
-				world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
+				world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.AMBIENT, 0.3F, 1F);
 			}
 		}
 
@@ -251,7 +256,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		if(this.getRWF()) {
 			this.setFueling(false);
 			if(world.getTotalWorldTime() % 40 == 0) {
-				world.playSound(null, this.getLocation(), TSounds.flyLoop, SoundCategory.BLOCKS, 0.5F, 1F);
+				world.playSound(null, this.getPos(), TSounds.flyLoop, SoundCategory.AMBIENT, 0.5F, 1F);
 			}
 
 			if(this.artron <= 0) {
@@ -422,6 +427,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 			this.tardisLocation = BlockPos.fromLong(tardisTag.getLong("tardisLoc"));
 			this.dimension = tardisTag.getInteger("dim");
 			this.destDim = tardisTag.getInteger("destDim");
+			this.RWF = tardisTag.getBoolean("RWF");
 			this.artron = tardisTag.getFloat("fuel");
 			this.RWF = tardisTag.getBoolean("RWF");
 			this.landOnSurface = tardisTag.getBoolean(NBT.LAND_ON_SURFACE);
@@ -609,6 +615,10 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public int getTicks() {
 		return this.ticksToTravel;
 	}
+
+	public boolean getRWF() {
+		return this.RWF;
+	}
 	
 	public boolean isInFlight() {
 		return this.ticksToTravel > 0;
@@ -627,9 +637,10 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		this.artron = (f > this.maxArtron ? this.maxArtron : (f < 0 ? 0 : f));
 		this.markDirty();
 	}
-	
-	public boolean getRWF() {
-		return this.RWF;
+
+	public void setRWF(boolean rwf) { //Doesnt save or gets reset
+		this.RWF = rwf;
+		this.markDirty();
 	}
 
 	public void setSpaceTimeCoordnate(final SpaceTimeCoord co) {
@@ -638,7 +649,8 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	
 	public boolean startFlight() {
 		final TardisTakeOffEvent event = new TardisTakeOffEvent(this);
-		if (MinecraftForge.EVENT_BUS.post(event) || event.getFuel() <= 0.0F || event.getDestination() == null || event.getDestination() == BlockPos.ORIGIN || !getCanFly()) {
+
+		if (MinecraftForge.EVENT_BUS.post(event) || event.getFuel() <= 0.0F || event.getDestination() == null || event.getDestination() == BlockPos.ORIGIN || !getCanFly() || this.getDoor().isOpen()) {
 			world.playSound(null, this.getPos(), TSounds.engine_stutter, SoundCategory.BLOCKS, 1F, 1F);
 			return false;
 		}
@@ -688,6 +700,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		tag.setFloat("fuel", this.artron);
 		tag.setBoolean("RWF", this.RWF);
 		tag.setInteger("timeLeft", ticksToTravel);
+		tag.setBoolean("RWF", RWF);
 		tag.setInteger(NBT.MAX_TIME, this.totalTimeToTravel);
 		tag.setString(NBT.CURRENT_DIM_NAME, this.currentDimName);
 		tag.setString(NBT.TARGET_DIM_NAME, this.targetDimName);
@@ -1040,7 +1053,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 	public float calcFuelUse() {
 		final SystemStabilizers stab = this.getSystem(SystemStabilizers.class);
 		if(stab != null) {
-			return stab.getHealth() > 0.0F && stab.isOn() ? 1F : 3F;
+			return stab.getHealth() > 0.0F && stab.isOn() ? 2F : 1F;
 		}
 		return 1;
 	}
@@ -1086,7 +1099,7 @@ public class TileEntityTardis extends TileEntity implements ITickable, IInventor
 		}
 		//Mount entity if it exists
 		final EntityTardis tardis = this.getTardisEntity();
-		if(tardis != null && !tardis.isDead && (this.artron > 20)) {
+		if(tardis != null && !tardis.isDead && (this.artron > 30)) {
 			entity.changeDimension(this.dimension, new TardisTeleporter(this.getLocation()));
 			ws.addScheduledTask(new Runnable() {
 				@Override

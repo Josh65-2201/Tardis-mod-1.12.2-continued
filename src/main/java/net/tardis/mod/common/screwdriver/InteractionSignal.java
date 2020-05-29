@@ -12,6 +12,7 @@ import net.tardis.mod.common.dimensions.TDimensions;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.common.helpers.Helper;
 import net.tardis.mod.util.common.helpers.TardisHelper;
+import net.tardis.mod.util.common.helpers.PlayerHelper;
 
 public class InteractionSignal implements IScrew {
 
@@ -21,14 +22,16 @@ public class InteractionSignal implements IScrew {
 			if (TardisHelper.hasTardis(player.getGameProfile().getId())) {
 				TileEntityTardis tardis = Helper.getTardis(world.getMinecraftServer().getWorld(TDimensions.TARDIS_ID).getTileEntity(TardisHelper.getTardis(player.getGameProfile().getId())));
 				tardis.setDesination(player.getPosition(), player.dimension);
+				return EnumActionResult.SUCCESS;
 			}
 		}
-		return EnumActionResult.SUCCESS;
+		PlayerHelper.sendMessage(player, "screw.fail.noTardis", true);
+		return EnumActionResult.FAIL;
 	}
 
 	@Override
 	public EnumActionResult blockInteraction(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-		return EnumActionResult.PASS;
+		return EnumActionResult.FAIL;
 	}
 
 	@Override
@@ -49,11 +52,6 @@ public class InteractionSignal implements IScrew {
 	@Override
 	public boolean causesCoolDown() {
 		return true;
-	}
-
-	@Override
-	public int energyRequired() {
-		return 5;
 	}
 	
 	@Override

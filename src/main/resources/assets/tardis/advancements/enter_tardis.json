@@ -1,0 +1,49 @@
+{
+    "__comment": "Made with TheDestruc7i0n's advancements generator: https://advancements.thedestruc7i0n.ca",
+    "display": {
+        "title": {
+            "text": "It's bigger on the inside",
+            "color": "white",
+            "bold": false
+        },
+        "description": {
+            "text": "You entered the TARDIS",
+            "color": "white"
+        },
+        "icon": {
+            "item": "minecraft:stone"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false
+    },
+    "criteria": {
+        "Enter Tardis": {
+            "trigger": "minecraft:changed_dimension"
+        }
+    },
+    "requirements": [
+        [
+            "Enter Tardis"
+        ]
+    ],
+    "rewards": {
+        "recipes": [
+            "tardis:sonic_screwdriver",
+            "tardis:sonic_pen",
+            "tardis:sonic_cane",
+            "tardis:sonic_workbench",
+            "tardis:tardis_key",
+            "tardis:repair_capsule",
+            "tardis:antenna",
+            "tardis:chameleon_circuit",
+            "tardis:temporal_circuits",
+            "tardis:thermocouplings",
+            "tardis:fluid_links",
+            "tardis:demat_circuit",
+            "tardis:tvg"
+        ]
+    },
+    "parent": "tardis:create_coral"
+}

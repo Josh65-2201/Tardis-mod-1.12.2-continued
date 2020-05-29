@@ -41,7 +41,6 @@ public class MessageWaypointSave implements IMessage {
 
 		@Override
 		public IMessage onMessage(MessageWaypointSave message, MessageContext ctx) {
-			//Frill...
 			ctx.getServerHandler().player.getServerWorld().addScheduledTask(new Runnable() {
 				@Override
 				public void run() {

@@ -158,6 +158,7 @@ tile.tardis.artron_bank.name=Artron Bank
 tile.tardis.gallifreyan_grass.name=Strange Grass
 tile.tardis.gallifreyan_dirt.name=Strange Dirt
 tile.tardis.gallifreyan_stone.name=Strange Stone
+tile.tardis.gallifreyan_sand.name=Strange sand
 
 tardis.locked.true=TARDIS locked!
 tardis.locked.false=TARDIS unlocked!
