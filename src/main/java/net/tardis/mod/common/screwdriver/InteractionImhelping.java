@@ -33,7 +33,9 @@ public class InteractionImhelping implements IScrew {
 	
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
-		if(!player.isSneaking() && !world.isRemote) {
+		if (world.isRemote) return EnumActionResult.FAIL;
+		
+		if(!player.isSneaking()) {
 			Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:sonic_imhelping");
 			return EnumActionResult.SUCCESS;
 		}
