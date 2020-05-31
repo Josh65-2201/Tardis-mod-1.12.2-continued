@@ -29,6 +29,8 @@ public class InteractionRoomgen implements IScrew {
 
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
+		if (world.isRemote) return EnumActionResult.FAIL;
+		
 		if (!player.isSneaking()) {
 			Minecraft.getMinecraft().displayGuiScreen(new GuiRoomgen());
 		}
@@ -45,13 +47,15 @@ public class InteractionRoomgen implements IScrew {
 			PlayerHelper.sendMessage(player, "Room Genaration not yet avaliable", true);
 			
 			roomsMade++;
-			if (roomsMade == 1) {
-				Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:make_1_room");
+			if (world.isRemote) {
+				if (roomsMade == 1) {
+						Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:make_1_room");
+				}
+				if (roomsMade == 100) {
+						Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:make_100_room");
+				}
+				return EnumActionResult.SUCCESS;
 			}
-			if (roomsMade == 100) {
-				Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:make_100_room");
-			}
-			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.FAIL;
 	}
