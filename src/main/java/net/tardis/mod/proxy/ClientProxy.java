@@ -2,6 +2,7 @@ package net.tardis.mod.proxy;
 
 import java.util.ArrayList;
 
+import net.minecraft.advancements.ICriterionTrigger;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelOcelot;
@@ -141,6 +142,7 @@ import net.tardis.mod.common.tileentity.exteriors.TileEntityDoorClock;
 import net.tardis.mod.common.tileentity.exteriors.TileEntityDoorWardrobe;
 import net.tardis.mod.common.tileentity.exteriors.TileEntityDoorWood;
 import net.tardis.mod.config.TardisConfig;
+import net.tardis.mod.util.ModTriggers;
 
 @EventBusSubscriber(modid = Tardis.MODID, value = Side.CLIENT)
 public class ClientProxy extends ServerProxy {
@@ -272,8 +274,6 @@ public class ClientProxy extends ServerProxy {
 	public void init() {
 		TItems.first_cane.setTileEntityItemStackRenderer(new RenderTEISRItem(new ModelFirstCane(), ModelFirstCane.TEXTURE));
 		TItems.sonic13th.setTileEntityItemStackRenderer(new RenderTEISRItem(new ModelSonic13()));
-		//TItems.player_victim.setTileEntityItemStackRenderer(new TEISRVictim());
-
 		Item.getItemFromBlock(TBlocks.tardis_top).setTileEntityItemStackRenderer(new RenderItemTardis());
 		Item.getItemFromBlock(TBlocks.tardis_top_01).setTileEntityItemStackRenderer(new RenderItemTardis02());
 		Item.getItemFromBlock(TBlocks.alembic).setTileEntityItemStackRenderer(new RenderItemAlembic());
@@ -290,6 +290,25 @@ public class ClientProxy extends ServerProxy {
 		EnumCompanionType.WOLSEY.setModel(new ModelOcelot());
 		
 		TardisKeyBinds.init();
+
+		//Custom advancement triggers
+		Method method;
+
+        method = ReflectionHelper.findMethod(CriteriaTriggers.class, "register", "func_192118_a", ICriterionTrigger.class);
+
+        method.setAccessible(true);
+
+        for (int i=0; i < ModTriggers.TRIGGER_ARRAY.length; i++)
+        {
+            try
+            {
+                method.invoke(null, ModTriggers.TRIGGER_ARRAY[i]);
+            }
+            catch (IllegalAccessException | IllegalArgumentException e)
+            {
+                e.printStackTrace();
+            }
+        }
 	}
 	
 	@Override
