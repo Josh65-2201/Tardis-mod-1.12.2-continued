@@ -19,6 +19,7 @@ public class InteractionEpanelChange implements IScrew {
 	@Override
 	public EnumActionResult performAction(World world, EntityPlayer player, EnumHand hand) {
 		//switch Epanel here
+		return EnumActionResult.SUCCESS;
 	}
 
 	@Override
