@@ -1,12 +1,6 @@
 package net.tardis.mod.common.screwdriver;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockDispenser;
-import net.minecraft.block.BlockDoor;
-import net.minecraft.block.BlockRedstoneLight;
-import net.minecraft.block.BlockTNT;
-import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,8 +14,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.tardis.mod.Tardis;
-import net.tardis.mod.common.blocks.TBlocks;
-import net.tardis.mod.common.blocks.BlockEPanel;
 import net.tardis.mod.common.dimensions.TDimensions;
 import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.common.systems.SystemStabilizers;
@@ -49,7 +41,6 @@ public class InteractionLockdown implements IScrew {
 					tardis.setDesination(world.getSpawnPoint(), 0);
 					tardis.getDoor().setOpen(false);
 					tardis.startFlight();
-					//message
 					Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:sonic_lockdown");
 					return EnumActionResult.SUCCESS;
 				}
@@ -62,10 +53,6 @@ public class InteractionLockdown implements IScrew {
 	
 	@Override
 	public EnumActionResult blockInteraction(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
-		if (world.isRemote) return EnumActionResult.FAIL;
-		
-		Block block = state.getBlock();
-		
 		return EnumActionResult.FAIL;
 	}
 	

@@ -67,6 +67,7 @@ public class GuiChangeInterior extends GuiScreen{
 		});
 		this.addButton(this.addButton(0, "> Select interior")).addAction(() -> {
 			NetworkHandler.NETWORK.sendToServer(new MessageChangeInterior(index, tardis.getPos()));
+			Minecraft.getMinecraft().player.sendChatMessage("/advancement grant @s only tardis:you_redecorated");
 			Minecraft.getMinecraft().displayGuiScreen(null);
 		});
 	}
