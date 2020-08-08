@@ -22,7 +22,6 @@ import net.tardis.mod.common.tileentity.TileEntityTardis;
 import net.tardis.mod.util.common.helpers.Helper;
 import net.tardis.mod.util.common.helpers.TardisHelper;
 import net.tardis.mod.util.common.helpers.PlayerHelper;
-import net.tardis.mod.util.ModTriggers;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -37,7 +36,6 @@ public class InteractionImhelping implements IScrew {
 		if (world.isRemote) return EnumActionResult.FAIL;
 		
 		if(!player.isSneaking()) {
-			ModTriggers.IM_HELPING.trigger((EntityPlayerMP)player);
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.FAIL;

@@ -142,7 +142,6 @@ import net.tardis.mod.common.tileentity.exteriors.TileEntityDoorClock;
 import net.tardis.mod.common.tileentity.exteriors.TileEntityDoorWardrobe;
 import net.tardis.mod.common.tileentity.exteriors.TileEntityDoorWood;
 import net.tardis.mod.config.TardisConfig;
-import net.tardis.mod.util.ModTriggers;
 
 @EventBusSubscriber(modid = Tardis.MODID, value = Side.CLIENT)
 public class ClientProxy extends ServerProxy {
@@ -290,25 +289,6 @@ public class ClientProxy extends ServerProxy {
 		EnumCompanionType.WOLSEY.setModel(new ModelOcelot());
 		
 		TardisKeyBinds.init();
-
-		//Custom advancement triggers
-		Method method;
-
-        method = ReflectionHelper.findMethod(CriteriaTriggers.class, "register", "func_192118_a", ICriterionTrigger.class);
-
-        method.setAccessible(true);
-
-        for (int i=0; i < ModTriggers.TRIGGER_ARRAY.length; i++)
-        {
-            try
-            {
-                method.invoke(null, ModTriggers.TRIGGER_ARRAY[i]);
-            }
-            catch (IllegalAccessException | IllegalArgumentException e)
-            {
-                e.printStackTrace();
-            }
-        }
 	}
 	
 	@Override
