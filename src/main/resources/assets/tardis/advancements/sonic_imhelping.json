@@ -17,7 +17,7 @@
     },
     "criteria": {
         "sonic lockdown": {
-            "trigger": "sonic_imhelping"
+            "trigger": "minecraft:impossible"
         }
     },
     "requirements": [

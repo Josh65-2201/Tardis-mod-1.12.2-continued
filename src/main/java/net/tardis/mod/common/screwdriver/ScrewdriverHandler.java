@@ -20,5 +20,6 @@ public class ScrewdriverHandler {
 		register(new InteractionSignal());
 		register(new InteractionRoomgen());
 		register(new InteractionLockdown());
+		register(new InteractionEpanelChange());
 	}
 }
