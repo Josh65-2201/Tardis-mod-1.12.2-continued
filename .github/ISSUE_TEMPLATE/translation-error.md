@@ -1,27 +1,23 @@
 ---
-name: Bug report
+name: Translation error
 about: Create a report to help us improve
 title: ''
-labels: bug
+labels: Translation
 assignees: josh-65
 
 ---
 
-**Describe the bug**
+**Describe the Issue**
+A clear and concise description of what the bug is.
 
-
-**To Reproduce**
+**Location**
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
 4. See error
 
-**Expected behaviour**
-
-
 **Screenshots**
 
 
-**Desktop (please complete the following information):**
- - OS: [e.g. Windows 10 build 19043.1083]
+**Versions**
  - Version [e.g. 1.0.0]
