@@ -9,4 +9,4 @@ build
 *.class
 *.md5
 *.log
-zPush to github.bat
+zGithub sync.bat
